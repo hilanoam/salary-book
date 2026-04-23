@@ -10,36 +10,37 @@ function OfficersPage() {
   const [majorRows, setMajorRows] = useState([]);
 
   useEffect(() => {
-    loadJson("מפקח.json").then(setInspectorRows);
-    loadJson("משפטנים.json").then(setLawRows);
-    loadJson("פקד.json").then(setCaptainRows);
-    loadJson("רפק.json").then(setMajorRows);
+    loadJson("inspectors.json").then(setInspectorRows).catch(console.error);
+    loadJson("lawyers.json").then(setLawRows).catch(console.error);
+    loadJson("captain.json").then(setCaptainRows).catch(console.error);
+    loadJson("major.json").then(setMajorRows).catch(console.error);
   }, []);
 
   return (
     <div>
       <PageHeader
         title="שכר קצינים"
+        subtitle="טבלאות מפקח, משפטנים, פקד ורפ״ק"
       />
 
       <section className="section-block">
         <h3>מפקח</h3>
-        <DataTable rows={inspectorRows.slice(0, 20)} />
+        <DataTable rows={inspectorRows} />
       </section>
 
       <section className="section-block">
         <h3>משפטנים</h3>
-        <DataTable rows={lawRows.slice(0, 20)} />
+        <DataTable rows={lawRows} />
       </section>
 
       <section className="section-block">
         <h3>פקד</h3>
-        <DataTable rows={captainRows.slice(0, 20)} />
+        <DataTable rows={captainRows} />
       </section>
 
       <section className="section-block">
         <h3>רפ״ק</h3>
-        <DataTable rows={majorRows.slice(0, 20)} />
+        <DataTable rows={majorRows} />
       </section>
     </div>
   );

@@ -7,21 +7,14 @@ import { loadJson } from "../services/dataService";
 function SergeantsGroupPage() {
   const { groupId } = useParams();
   const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadJson("נגדים.json")
-      .then((data) => setRows(data))
-      .catch((error) => {
-        console.error("שגיאה בטעינת נתוני נגדים:", error);
-        setRows([]);
-      })
-      .finally(() => setLoading(false));
+    loadJson("sergeants.json").then(setRows).catch(console.error);
   }, []);
 
   const filteredRows = useMemo(() => {
-    return rows.filter((row) =>
-      Object.values(row).some((value) => String(value ?? "").includes(groupId))
+    return rows.filter(
+      (row) => Number(row["קבוצת תמריץ"]) === Number(groupId)
     );
   }, [rows, groupId]);
 
@@ -29,13 +22,10 @@ function SergeantsGroupPage() {
     <div>
       <PageHeader
         title={`שכר נגדים - קבוצה ${groupId}`}
+        subtitle={`הצגת טבלת קבוצה ${groupId} בלבד`}
       />
 
-      {loading ? (
-        <div className="empty-state">טוען נתונים...</div>
-      ) : (
-        <DataTable rows={filteredRows} />
-      )}
+      <DataTable rows={filteredRows} />
     </div>
   );
 }

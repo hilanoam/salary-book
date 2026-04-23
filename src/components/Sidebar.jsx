@@ -3,6 +3,7 @@ import { useState } from "react";
 
 function Sidebar() {
   const [openSergeants, setOpenSergeants] = useState(true);
+  const [openOfficers, setOpenOfficers] = useState(true);
 
   return (
     <aside className="sidebar">
@@ -60,44 +61,53 @@ function Sidebar() {
                 חיפוש לפי מקצוע
               </NavLink>
 
-              <NavLink to="/sergeants/group/1" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 1
-              </NavLink>
-
-              <NavLink to="/sergeants/group/2" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 2
-              </NavLink>
-
-              <NavLink to="/sergeants/group/3" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 3
-              </NavLink>
-
-              <NavLink to="/sergeants/group/4" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 4
-              </NavLink>
-
-              <NavLink to="/sergeants/group/5" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 5
-              </NavLink>
-
-              <NavLink to="/sergeants/group/6" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 6
-              </NavLink>
-
-              <NavLink to="/sergeants/group/7" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 7
-              </NavLink>
-
-              <NavLink to="/sergeants/group/8" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                קבוצה 8
-              </NavLink>
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((group) => (
+                <NavLink
+                  key={group}
+                  to={`/sergeants/group/${group}`}
+                  className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}
+                >
+                  קבוצה {group}
+                </NavLink>
+              ))}
             </div>
           )}
         </div>
 
-        <NavLink to="/officers" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-          שכר קצינים
-        </NavLink>
+        <div className="nav-group">
+          <button
+            className="nav-item nav-toggle"
+            onClick={() => setOpenOfficers(!openOfficers)}
+            type="button"
+          >
+            <span>שכר קצינים</span>
+            <span>{openOfficers ? "−" : "+"}</span>
+          </button>
+
+          {openOfficers && (
+            <div className="sub-nav">
+              <NavLink to="/officers" end className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
+                כל הטבלאות
+              </NavLink>
+
+              <NavLink to="/officers/inspectors" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
+                מפקח
+              </NavLink>
+
+              <NavLink to="/officers/lawyers" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
+                משפטנים
+              </NavLink>
+
+              <NavLink to="/officers/captain" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
+                פקד
+              </NavLink>
+
+              <NavLink to="/officers/major" className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
+                רפ"ק
+              </NavLink>
+            </div>
+          )}
+        </div>
       </nav>
     </aside>
   );

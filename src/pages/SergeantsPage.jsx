@@ -5,30 +5,19 @@ import { loadJson } from "../services/dataService";
 
 function SergeantsPage() {
   const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadJson("נגדים.json")
-      .then((data) => setRows(data))
-      .catch((error) => {
-        console.error("שגיאה בטעינת נתוני נגדים:", error);
-        setRows([]);
-      })
-      .finally(() => setLoading(false));
+    loadJson("sergeants.json").then(setRows).catch(console.error);
   }, []);
 
   return (
     <div>
       <PageHeader
         title="שכר נגדים"
-        subtitle="כל טבלאות הנגדים במקום אחד."
+        subtitle="כל טבלאות הנגדים"
       />
 
-      {loading ? (
-        <div className="empty-state">טוען נתונים...</div>
-      ) : (
-        <DataTable rows={rows} />
-      )}
+      <DataTable rows={rows} />
     </div>
   );
 }

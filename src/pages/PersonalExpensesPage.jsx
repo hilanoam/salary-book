@@ -2,18 +2,18 @@ import PageHeader from "../components/PageHeader";
 
 function PersonalExpensesPage() {
   const expenses = [
-    { "דרגת שכר": 'רס"ל', "החזר הוצאות אישיות ברוטו": 229 },
-    { "דרגת שכר": 'רס"ר', "החזר הוצאות אישיות ברוטו": 344 },
-    { "דרגת שכר": "מפקח", "החזר הוצאות אישיות ברוטו": 350 },
-    { "דרגת שכר": "פקד", "החזר הוצאות אישיות ברוטו": 580 },
-    { "דרגת שכר": 'רפ"ק', "החזר הוצאות אישיות ברוטו": 701 },
+    { rank: 'רס"ל', amount: 229 },
+    { rank: 'רס"ר', amount: 344 },
+    { rank: "מפקח", amount: 350 },
+    { rank: "פקד", amount: 580 },
+    { rank: 'רפ"ק', amount: 701 },
   ];
 
   return (
     <div>
       <PageHeader
         title="החזר הוצאות אישיות"
-        subtitle="טבלת החזרים לפי דרגת שכר."
+        subtitle="טבלת החזר הוצאות לפי דרגת שכר"
       />
 
       <div className="table-card">
@@ -28,8 +28,8 @@ function PersonalExpensesPage() {
             <tbody>
               {expenses.map((row, index) => (
                 <tr key={index}>
-                  <td>{row["דרגת שכר"]}</td>
-                  <td>{row["החזר הוצאות אישיות ברוטו"]} ₪</td>
+                  <td>{row.rank}</td>
+                  <td>{row.amount} ₪</td>
                 </tr>
               ))}
             </tbody>

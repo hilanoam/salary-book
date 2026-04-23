@@ -11,6 +11,7 @@ import SergeantsPage from "./pages/SergeantsPage";
 import SergeantsSearchPage from "./pages/SergeantsSearchPage";
 import SergeantsGroupPage from "./pages/SergeantsGroupPage";
 import OfficersPage from "./pages/OfficersPage";
+import OfficersTypePage from "./pages/OfficersTypePage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="sergeants/group/:groupId" element={<SergeantsGroupPage />} />
 
         <Route path="officers" element={<OfficersPage />} />
+        <Route path="officers/:type" element={<OfficersTypePage />} />
       </Route>
     </Routes>
   );
