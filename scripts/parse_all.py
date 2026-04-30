@@ -24,7 +24,7 @@ def clean(val):
 def normalize_headers(row):
     return [str(h).strip() if h else f"col_{i}" for i, h in enumerate(row)]
 
-def read_simple(ws, header_row=1):
+def read_simple(ws, header_row=1, fixed_fields=None):
     rows = list(ws.iter_rows(values_only=True))
     headers = normalize_headers(rows[header_row - 1])
 
@@ -35,7 +35,13 @@ def read_simple(ws, header_row=1):
         if not any(values):
             continue
 
-        record = {headers[i]: values[i] for i in range(len(headers))}
+        record = {}
+
+        if fixed_fields:
+            record.update(fixed_fields)
+
+        for i in range(len(headers)):
+            record[headers[i]] = values[i] if i < len(values) else None
 
         if not record.get("דרגת שכר") and not record.get("סה\"כ משכורת ברוטו"):
             continue
@@ -43,7 +49,6 @@ def read_simple(ws, header_row=1):
         data.append(record)
 
     return data
-
 # נגדים (כמו שעשינו)
 def read_sergeants():
     wb = load_workbook(FILES["sergeants"], data_only=True)
@@ -84,24 +89,32 @@ def export(name, data):
     print(f"✔ {name}.json → {len(data)} rows")
 
 def main():
-    # inspectors
     wb = load_workbook(FILES["inspectors"], data_only=True)
-    export("inspectors", read_simple(wb.active, 1))
+    export(
+        "inspectors",
+        read_simple(wb.active, 1, {"דרגת שכר": "מפקח"})
+    )
 
-    # lawyers (שורה 2)
     wb = load_workbook(FILES["lawyers"], data_only=True)
-    export("lawyers", read_simple(wb.active, 1))
+    export(
+        "lawyers",
+        read_simple(wb.active, 1, {"דרגת שכר": "משפטנים"})
+    )
 
-    # captain
     wb = load_workbook(FILES["captain"], data_only=True)
-    export("captain", read_simple(wb.active, 1))
+    export(
+        "captain",
+        read_simple(wb.active, 1, {"דרגת שכר": "פקד"})
+    )
 
-    # major
     wb = load_workbook(FILES["major"], data_only=True)
-    export("major", read_simple(wb.active, 1))
+    export(
+        "major",
+        read_simple(wb.active, 1, {"דרגת שכר": "רפ\"ק"})
+    )
 
-    # sergeants
     export("sergeants", read_sergeants())
+
 
 if __name__ == "__main__":
     main()
