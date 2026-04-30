@@ -9,7 +9,10 @@ body {
   background: #f4f7fb;
   color: #1f2937;
 }
-
+input,
+select {
+  font-weight: 400;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -688,7 +691,9 @@ table,
 .signature-name {
   font-size: 17px;
 }
-
+button {
+  font-weight: 500;
+}
 
 .intro-page {
   max-width: 1000px;
@@ -829,4 +834,16 @@ table,
   color: #6b7280;
   font-weight: 700;
   margin: 0 0 16px;
+}
+
+::placeholder {
+  font-family: "Heebo", sans-serif;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Heebo", sans-serif;
+}
+
+:-ms-input-placeholder {
+  font-family: "Heebo", sans-serif;
 }

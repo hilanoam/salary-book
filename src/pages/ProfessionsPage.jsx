@@ -65,10 +65,6 @@ function ProfessionsPage() {
             </select>
           </div>
 
-          <p className="results-counter">
-            מוצגות {filteredRows.length} רשומות
-          </p>
-
           <DataTable rows={filteredRows} />
         </div>
       </section>
