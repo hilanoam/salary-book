@@ -49,8 +49,8 @@ function PersonalExpensesPage() {
 
           <h3>טבלת החזר הוצאות אישיות לפי דרגה</h3>
 
-          <div className="mini-table-wrap">
-            <table className="mini-table">
+          <div className="table-wrap">
+            <table className="salary-table">
               <thead>
                 <tr>
                   <th>דרגת שכר</th>

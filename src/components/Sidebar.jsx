@@ -9,7 +9,9 @@ function Sidebar({ isOpen, onClose }) {
     <aside className={isOpen ? "sidebar open" : "sidebar"}>
       <div className="sidebar-brand">
         <h2>חוברת שכר</h2>
-        <p>דוגמית אתר</p>
+        <p>מתגייסים 2026
+          
+        </p>
       </div>
 
       <nav className="sidebar-nav">

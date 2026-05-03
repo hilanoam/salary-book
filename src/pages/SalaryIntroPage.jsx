@@ -40,8 +40,8 @@ function SalaryIntroPage() {
             התמריץ.
           </p>
 
-          <div className="mini-table-wrap">
-            <table className="mini-table">
+          <div className="table-wrap">
+            <table className="salary-table">
               <thead>
                 <tr>
                   <th>דרגה</th>
@@ -81,6 +81,9 @@ function SalaryIntroPage() {
               </tbody>
             </table>
           </div>
+          <p>
+            
+          </p>
 
           <ul>
             <li>

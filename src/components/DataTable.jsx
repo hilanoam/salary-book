@@ -164,6 +164,12 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                           value = "אחיד / טכנאי לא ישים";
                         }
 
+                        const num = Number(value);
+
+                        if (!isNaN(num) && value !== "") {
+                          return num.toLocaleString("he-IL");
+                        }
+
                         return value ?? "";
                       })()}
 
