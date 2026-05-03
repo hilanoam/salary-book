@@ -697,6 +697,8 @@ button {
   }
 
   .mobile-menu-btn {
+    font-size: 28px;
+    padding: 16px 22px;
     display: inline-flex;
     position: sticky;
     top: 12px;
