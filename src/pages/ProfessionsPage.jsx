@@ -36,8 +36,6 @@ function ProfessionsPage() {
     <div className="page-wrapper">
       <section className="intro-page">
         <header className="intro-main-header">
-
-
           <h1>חיפוש לפי מקצוע</h1>
 
           <p className="intro-subtitle">

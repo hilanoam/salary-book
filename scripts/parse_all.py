@@ -22,7 +22,19 @@ def clean(val):
     return val
 
 def normalize_headers(row):
-    return [str(h).strip() if h else f"col_{i}" for i, h in enumerate(row)]
+    headers = []
+
+    for i, h in enumerate(row):
+        name = str(h).strip() if h else f"col_{i}"
+
+        # איחוד שם העמודה: דרוג -> דירוג
+        if name == "דרוג":
+            name = "דירוג"
+
+        headers.append(name)
+
+    return headers
+
 
 def read_simple(ws, header_row=1, fixed_fields=None):
     rows = list(ws.iter_rows(values_only=True))

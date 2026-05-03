@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import PageHeader from "../components/PageHeader";
 import DataTable from "../components/DataTable";
 import { loadJson } from "../services/dataService";
 
@@ -10,7 +9,7 @@ function SergeantsGroupPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadJson("professions.json")
+    loadJson("sergeants.json")
       .then(setRows)
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -23,13 +22,20 @@ function SergeantsGroupPage() {
   }, [rows, groupId]);
 
   return (
-    <div>
-      <PageHeader
-        title={`שכר נגדים - קבוצה ${groupId}`}
-        subtitle={`הצגת טבלת קבוצה ${groupId} בלבד`}
-      />
+    <div className="page-wrapper">
+      <section className="intro-page wide">
+        <header className="intro-main-header">
+          <h1>שכר נגדים - קבוצה {groupId}</h1>
 
-      <DataTable rows={filteredRows} loading={loading} />
+          <p className="intro-subtitle">
+            הצגת טבלת שכר לנגדים בקבוצת תמריץ {groupId}
+          </p>
+        </header>
+
+        <div className="intro-body">
+          <DataTable rows={filteredRows} loading={loading} />
+        </div>
+      </section>
     </div>
   );
 }

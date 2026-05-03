@@ -156,7 +156,17 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
 
                   return (
                     <td key={col} className={isSalary ? "salary-cell" : ""}>
-                      {row[col] ?? ""}
+                      {(() => {
+                        let value = row[col];
+
+                        // 💥 כאן הקסם
+                        if (value === "אחיד") {
+                          value = "אחיד / טכנאי לא ישים";
+                        }
+
+                        return value ?? "";
+                      })()}
+
                       {isSalary && row[col] ? " ₪" : ""}
                     </td>
                   );

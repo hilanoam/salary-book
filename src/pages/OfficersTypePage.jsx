@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import PageHeader from "../components/PageHeader";
 import DataTable from "../components/DataTable";
 import { loadJson } from "../services/dataService";
-
 
 const officersMap = {
   inspectors: {
@@ -32,26 +30,48 @@ function OfficersTypePage() {
   const { type } = useParams();
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const config = useMemo(() => officersMap[type], [type]);
 
   useEffect(() => {
     if (!config) return;
-    loadJson(config.file).then(setRows).catch(console.error)
-    .finally(() => setLoading(false));
+
+    setLoading(true);
+
+    loadJson(config.file)
+      .then(setRows)
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, [config]);
 
   if (!config) {
-    return <div className="empty-state">העמוד לא נמצא</div>;
+    return (
+      <div className="page-wrapper">
+        <section className="intro-page">
+          <header className="intro-main-header">
+            <h1>העמוד לא נמצא</h1>
+            <p className="intro-subtitle">לא נמצאה טבלת קצינים מתאימה</p>
+          </header>
+        </section>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <PageHeader
-        title={`שכר קצינים - ${config.title}`}
-        subtitle={config.subtitle}
-      />
+    <div className="page-wrapper">
+      <section className="intro-page wide">
+        <header className="intro-main-header">
+          <h1>שכר קצינים - {config.title}</h1>
 
-      <DataTable rows={rows} loading={loading}  />
+          <p className="intro-subtitle">
+            {config.subtitle}
+          </p>
+        </header>
+
+        <div className="intro-body">
+          <DataTable rows={rows} loading={loading} />
+        </div>
+      </section>
     </div>
   );
 }

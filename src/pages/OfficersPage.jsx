@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import PageHeader from "../components/PageHeader";
+import { useEffect, useMemo, useState } from "react";
 import DataTable from "../components/DataTable";
 import { loadJson } from "../services/dataService";
 
@@ -8,41 +7,49 @@ function OfficersPage() {
   const [lawRows, setLawRows] = useState([]);
   const [captainRows, setCaptainRows] = useState([]);
   const [majorRows, setMajorRows] = useState([]);
-  
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadJson("inspectors.json").then(setInspectorRows).catch(console.error);
-    loadJson("lawyers.json").then(setLawRows).catch(console.error);
-    loadJson("captain.json").then(setCaptainRows).catch(console.error);
-    loadJson("major.json").then(setMajorRows).catch(console.error);
+    Promise.all([
+      loadJson("inspectors.json").then(setInspectorRows),
+      loadJson("lawyers.json").then(setLawRows),
+      loadJson("captain.json").then(setCaptainRows),
+      loadJson("major.json").then(setMajorRows),
+    ])
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
+  // 🔥 מאחדים את כל הטבלאות
+  const combinedRows = useMemo(() => {
+    const addType = (rows, type) =>
+      rows.map((row) => ({
+        סוג: type,
+        ...row,
+      }));
+
+    return [
+      ...addType(inspectorRows, "מפקח"),
+      ...addType(lawRows, "משפטנים"),
+      ...addType(captainRows, "פקד"),
+      ...addType(majorRows, 'רפ"ק'),
+    ];
+  }, [inspectorRows, lawRows, captainRows, majorRows]);
+
   return (
-    <div>
-      <PageHeader
-        title="שכר קצינים"
-        subtitle="טבלאות מפקח, משפטנים, פקד ורפ״ק"
-      />
+    <div className="page-wrapper">
+      <section className="intro-page wide">
+        <header className="intro-main-header">
+          <h1>שכר קצינים</h1>
 
-      <section className="section-block">
-        <h3>מפקח</h3>
-        <DataTable rows={inspectorRows} />
-      </section>
+          <p className="intro-subtitle">
+            טבלת שכר לכלל דרגות הקצינים
+          </p>
+        </header>
 
-      <section className="section-block">
-        <h3>משפטנים</h3>
-        <DataTable rows={lawRows} />
-      </section>
-
-      <section className="section-block">
-        <h3>פקד</h3>
-        <DataTable rows={captainRows} />
-      </section>
-
-      <section className="section-block">
-        <h3>רפ״ק</h3>
-        <DataTable rows={majorRows} />
+        <div className="intro-body">
+          <DataTable rows={combinedRows} loading={loading} />
+        </div>
       </section>
     </div>
   );
