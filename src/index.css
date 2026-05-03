@@ -677,3 +677,146 @@ button {
   color: #16324f;
 }
 
+.mobile-menu-btn {
+  display: none;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .app-shell {
+    display: block;
+    min-height: 100vh;
+  }
+
+  .content-area {
+    padding: 18px 12px;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+    position: sticky;
+    top: 12px;
+    z-index: 1200;
+    margin-bottom: 14px;
+    border: none;
+    border-radius: 999px;
+    padding: 11px 18px;
+    background: linear-gradient(135deg, #16324f, #2563eb);
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 82%;
+    max-width: 330px;
+    height: 100vh;
+    z-index: 1300;
+    transform: translateX(105%);
+    transition: 0.25s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 1250;
+  }
+
+  .page-header {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .intro-page,
+  .hero-card,
+  .info-card,
+  .table-card,
+  .smart-table-card {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .intro-main-header {
+    padding: 30px 18px 26px;
+  }
+
+  .intro-main-header h1 {
+    font-size: 28px;
+  }
+
+  .intro-body {
+    padding: 24px 4px 8px;
+    font-size: 15px;
+  }
+
+  .official-signature {
+    margin: 24px 18px 30px;
+  }
+
+  .table-toolbar,
+  .toolbar-actions,
+  .filters-card {
+    flex-direction: column;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .table-search,
+  .clear-btn {
+    width: 100%;
+  }
+
+  .column-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .salary-table {
+    min-width: 850px;
+  }
+
+  .salary-table th,
+  .salary-table td {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 82%;
+    max-width: 320px;
+    height: 100vh;
+    z-index: 1300;
+    transform: translateX(100%);
+    transition: 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
