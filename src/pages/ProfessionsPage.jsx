@@ -34,6 +34,7 @@ function ProfessionsPage() {
     <div className="page-wrapper">
       <section className="intro-page">
         <header className="intro-main-header">
+          <div className="intro-badge">טבלת מקצועות · קבוצות ותמריצים</div>
 
           <h1>חיפוש לפי מקצוע</h1>
 
@@ -43,27 +44,6 @@ function ProfessionsPage() {
         </header>
 
         <div className="intro-body">
-          <div className="filters-card professions-filters">
-            <input
-              className="search-input"
-              placeholder="חפשי לפי שם מקצוע, מספר מקצוע..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-
-            <select
-              className="search-input"
-              value={group}
-              onChange={(e) => setGroup(e.target.value)}
-            >
-              <option value="">כל קבוצות התמריץ</option>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((g) => (
-                <option key={g} value={String(g)}>
-                  קבוצה {g}
-                </option>
-              ))}
-            </select>
-          </div>
 
           <DataTable rows={filteredRows} />
         </div>

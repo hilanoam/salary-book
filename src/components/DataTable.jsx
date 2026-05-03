@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-function DataTable({ rows }) {
+function DataTable({ rows, showToolbar = true  }) {
   const [globalSearch, setGlobalSearch] = useState("");
   const [filters, setFilters] = useState({});
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -89,12 +89,6 @@ function DataTable({ rows }) {
   return (
     <div className="smart-table-card">
       <div className="table-toolbar">
-        <div>
-          <h3>טבלת נתונים</h3>
-          <p>
-            מוצגות {filteredRows.length} שורות מתוך {rows.length}
-          </p>
-        </div>
 
         <div className="toolbar-actions">
           <input
