@@ -8,6 +8,8 @@ function OfficersPage() {
   const [lawRows, setLawRows] = useState([]);
   const [captainRows, setCaptainRows] = useState([]);
   const [majorRows, setMajorRows] = useState([]);
+  
+
 
   useEffect(() => {
     loadJson("inspectors.json").then(setInspectorRows).catch(console.error);

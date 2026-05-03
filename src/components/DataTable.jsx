@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-function DataTable({ rows, showToolbar = true  }) {
+function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading = false }) {
   const [globalSearch, setGlobalSearch] = useState("");
   const [filters, setFilters] = useState({});
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -81,6 +81,14 @@ function DataTable({ rows, showToolbar = true  }) {
     setFilters({});
     setSortConfig({ key: null, direction: "asc" });
   }
+  if (loading) {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+        <p>טוען נתונים...</p>
+      </div>
+    );
+  }
 
   if (!rows || rows.length === 0) {
     return <div className="empty-state">אין נתונים להצגה</div>;
@@ -105,19 +113,21 @@ function DataTable({ rows, showToolbar = true  }) {
         </div>
       </div>
 
-      <div className="column-filters">
-        {columns.map((col) => (
-          <div className="filter-field" key={col}>
-            <label>{col}</label>
-            <input
-              type="text"
-              placeholder={`סינון לפי ${col}`}
-              value={filters[col] || ""}
-              onChange={(e) => updateFilter(col, e.target.value)}
-            />
-          </div>
-        ))}
-      </div>
+      {showColumnFilters && (
+        <div className="column-filters">
+          {columns.map((col) => (
+            <div className="filter-field" key={col}>
+              <label>{col}</label>
+              <input
+                type="text"
+                placeholder={`סינון לפי ${col}`}
+                value={filters[col] || ""}
+                onChange={(e) => updateFilter(col, e.target.value)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="table-wrap">
         <table className="salary-table">

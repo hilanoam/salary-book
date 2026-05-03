@@ -4,6 +4,7 @@ import PageHeader from "../components/PageHeader";
 import DataTable from "../components/DataTable";
 import { loadJson } from "../services/dataService";
 
+
 const officersMap = {
   inspectors: {
     file: "inspectors.json",
@@ -30,12 +31,13 @@ const officersMap = {
 function OfficersTypePage() {
   const { type } = useParams();
   const [rows, setRows] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const config = useMemo(() => officersMap[type], [type]);
 
   useEffect(() => {
     if (!config) return;
-    loadJson(config.file).then(setRows).catch(console.error);
+    loadJson(config.file).then(setRows).catch(console.error)
+    .finally(() => setLoading(false));
   }, [config]);
 
   if (!config) {
@@ -49,7 +51,7 @@ function OfficersTypePage() {
         subtitle={config.subtitle}
       />
 
-      <DataTable rows={rows} />
+      <DataTable rows={rows} loading={loading}  />
     </div>
   );
 }

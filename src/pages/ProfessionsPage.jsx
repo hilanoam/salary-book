@@ -6,11 +6,13 @@ function ProfessionsPage() {
   const [rows, setRows] = useState([]);
   const [search, setSearch] = useState("");
   const [group, setGroup] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadJson("professions.json")
       .then(setRows)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
   const filteredRows = useMemo(() => {
@@ -34,7 +36,7 @@ function ProfessionsPage() {
     <div className="page-wrapper">
       <section className="intro-page">
         <header className="intro-main-header">
-          <div className="intro-badge">טבלת מקצועות · קבוצות ותמריצים</div>
+
 
           <h1>חיפוש לפי מקצוע</h1>
 
@@ -45,7 +47,7 @@ function ProfessionsPage() {
 
         <div className="intro-body">
 
-          <DataTable rows={filteredRows} />
+          <DataTable rows={filteredRows} loading={loading} />
         </div>
       </section>
     </div>

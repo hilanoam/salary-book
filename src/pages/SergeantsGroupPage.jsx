@@ -7,9 +7,13 @@ import { loadJson } from "../services/dataService";
 function SergeantsGroupPage() {
   const { groupId } = useParams();
   const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadJson("sergeants.json").then(setRows).catch(console.error);
+    loadJson("professions.json")
+      .then(setRows)
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
   const filteredRows = useMemo(() => {
@@ -25,7 +29,7 @@ function SergeantsGroupPage() {
         subtitle={`הצגת טבלת קבוצה ${groupId} בלבד`}
       />
 
-      <DataTable rows={filteredRows} />
+      <DataTable rows={filteredRows} loading={loading} />
     </div>
   );
 }

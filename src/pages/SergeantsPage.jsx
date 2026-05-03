@@ -5,9 +5,13 @@ import { loadJson } from "../services/dataService";
 
 function SergeantsPage() {
   const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadJson("sergeants.json").then(setRows).catch(console.error);
+    loadJson("professions.json")
+      .then(setRows)
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -17,7 +21,7 @@ function SergeantsPage() {
         subtitle="כל טבלאות הנגדים"
       />
 
-      <DataTable rows={rows} />
+      <DataTable rows={rows}  loading={loading} />
     </div>
   );
 }
