@@ -757,6 +757,7 @@ button {
 
   .intro-main-header {
     padding: 30px 18px 26px;
+    border-radius: 24px;
   }
 
   .intro-main-header h1 {
