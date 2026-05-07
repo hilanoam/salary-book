@@ -14,7 +14,11 @@ function PersonalExpensesPage() {
 
       <section className="intro-page">
         <header className="intro-main-header">
- 
+        <img
+          src="/logo.png"
+          alt="לוגו מחלקת שכר"
+          className="header-logo"
+        />
 
           <h1>החזר הוצאות אישיות</h1>
 

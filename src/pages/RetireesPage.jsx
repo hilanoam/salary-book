@@ -3,6 +3,11 @@ function RetireesPage() {
     <div className="page-wrapper">
       <section className="intro-page">
         <header className="intro-main-header">
+           <img
+              src="/logo.png"
+              alt="לוגו מחלקת שכר"
+              className="header-logo"
+            />
           <h1>שמ״ז גמלאי</h1>
 
           <p className="intro-subtitle">

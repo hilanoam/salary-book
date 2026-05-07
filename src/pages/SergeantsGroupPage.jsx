@@ -25,6 +25,11 @@ function SergeantsGroupPage() {
     <div className="page-wrapper">
       <section className="intro-page wide">
         <header className="intro-main-header">
+           <img
+              src="/logo.png"
+              alt="לוגו מחלקת שכר"
+              className="header-logo"
+            />
           <h1>שכר נגדים - קבוצה {groupId}</h1>
 
           <p className="intro-subtitle">

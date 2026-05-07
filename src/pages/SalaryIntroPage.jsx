@@ -6,6 +6,11 @@ function SalaryIntroPage() {
 
       <section className="intro-page">
         <div className="intro-main-header">
+           <img
+              src="/logo.png"
+              alt="לוגו מחלקת שכר"
+              className="header-logo"
+            />
           <h1>שכר מתגייסים · 2026</h1>
           <p>
             סימולציות שכר בסיסיות לצורך מתן תמונה כללית במקצועות, דרגות,

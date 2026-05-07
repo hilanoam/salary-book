@@ -29,6 +29,10 @@ function MainLayout() {
 
       <main className="content-area">
         <Outlet />
+
+        <footer className="site-footer-logo">
+          <img src="/topcenter.png" alt="מקצוענות באנשים מצוינות בתוצאות" />
+        </footer>
       </main>
     </div>
   );

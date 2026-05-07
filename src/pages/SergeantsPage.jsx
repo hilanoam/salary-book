@@ -17,6 +17,11 @@ function SergeantsPage() {
     <div className="page-wrapper">
       <section className="intro-page wide">
         <header className="intro-main-header">
+           <img
+              src="/logo.png"
+              alt="לוגו מחלקת שכר"
+              className="header-logo"
+            />
           <h1>שכר נגדים</h1>
 
           <p className="intro-subtitle">

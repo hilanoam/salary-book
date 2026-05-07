@@ -40,6 +40,11 @@ function OfficersPage() {
     <div className="page-wrapper">
       <section className="intro-page wide">
         <header className="intro-main-header">
+           <img
+              src="/logo.png"
+              alt="לוגו מחלקת שכר"
+              className="header-logo"
+            />
           <h1>שכר קצינים</h1>
 
           <p className="intro-subtitle">

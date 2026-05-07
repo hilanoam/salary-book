@@ -2,6 +2,11 @@ function HomePage() {
   return (
     <section className="intro-page">
       <header className="intro-main-header">
+        <img
+          src="/logo.png"
+          alt="לוגו מחלקת שכר"
+          className="header-logo" 
+        />
         <div className="intro-badge">גרסה 01 · 01.05.2026</div>
 
         <h1>חוברת שכר למתגייסים</h1>
