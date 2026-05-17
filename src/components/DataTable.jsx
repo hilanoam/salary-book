@@ -10,6 +10,12 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
     return Object.keys(rows[0]);
   }, [rows]);
 
+  const isProfessionsTable =
+  columns.includes("מקצוע") ||
+  columns.includes("מספר מקצוע") ||
+  columns.includes("קבוצת פעילות") ||
+  columns.includes("רמת פעילות");
+
   const filteredRows = useMemo(() => {
     if (!rows) return [];
 
@@ -118,12 +124,20 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
           {columns.map((col) => (
             <div className="filter-field" key={col}>
               <label>{col}</label>
-              <input
-                type="text"
-                placeholder={`סינון לפי ${col}`}
+              <select
                 value={filters[col] || ""}
                 onChange={(e) => updateFilter(col, e.target.value)}
-              />
+              >
+                <option value="">הכל</option>
+
+                {[...new Set(rows.map((row) => row[col]).filter(Boolean))]
+                  .sort((a, b) => String(a).localeCompare(String(b), "he"))
+                  .map((value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+              </select>
             </div>
           ))}
         </div>
@@ -167,6 +181,10 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                         const num = Number(value);
 
                         if (!isNaN(num) && value !== "") {
+                          if (isProfessionsTable) {
+                            return value; // ללא פסיקים בטבלת המקצועות
+                          }
+
                           return num.toLocaleString("he-IL");
                         }
 

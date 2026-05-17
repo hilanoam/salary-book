@@ -8,7 +8,7 @@ import StudentsPage from "./pages/StudentsPage";
 import RetireesPage from "./pages/RetireesPage";
 import JerusalemPage from "./pages/JerusalemPage";
 import SergeantsPage from "./pages/SergeantsPage";
-
+import ProfileBuilderPage from "./pages/ProfileBuilderPage";
 import SergeantsGroupPage from "./pages/SergeantsGroupPage";
 import OfficersPage from "./pages/OfficersPage";
 import OfficersTypePage from "./pages/OfficersTypePage";
@@ -25,7 +25,7 @@ function App() {
         <Route path="students" element={<StudentsPage />} />
         <Route path="retirees" element={<RetireesPage />} />
         <Route path="jerusalem" element={<JerusalemPage />} />
-
+        <Route path="/profile-builder" element={<ProfileBuilderPage />} />
         <Route path="sergeants" element={<SergeantsPage />} />
        
         <Route path="sergeants/group/:groupId" element={<SergeantsGroupPage />} />
