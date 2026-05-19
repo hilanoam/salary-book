@@ -166,7 +166,16 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
             {filteredRows.map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {columns.map((col) => {
-                  const isSalary = col.includes("משכורת") || col.includes("ברוטו");
+                  const isSalary =
+                    col.includes("משכורת") ||
+                    col.includes("ברוטו") ||
+                    col.includes("בסוף שבוע") ||
+                    col.includes("וסייר") ||
+                    col.includes("שכר");
+
+                  const isPercent =
+                    col.includes("אחוז") ||
+                    col.includes("אחוז תמריץ");
 
                   return (
                     <td key={col} className={isSalary ? "salary-cell" : ""}>
@@ -191,6 +200,7 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                         return value ?? "";
                       })()}
 
+                      {isPercent && row[col] ? "%" : ""}
                       {isSalary && row[col] ? " ₪" : ""}
                     </td>
                   );
