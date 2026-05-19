@@ -182,7 +182,6 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                       {(() => {
                         let value = row[col];
 
-                        // 💥 כאן הקסם
                         if (value === "אחיד") {
                           value = "אחיד / טכנאי לא ישים";
                         }
