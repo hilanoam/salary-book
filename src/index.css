@@ -75,12 +75,26 @@ a {
 .nav-toggle {
   padding: 14px 16px;
   border-radius: 14px;
-  background: transparent;
+  background: #f6faff;
   color: #475569;
   transition: 0.2s ease;
   line-height: 1.4;
+  
 }
-
+.nav-toggle span:last-child {
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+  min-width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e6f1ff;
+  color: #85aafa;
+  
+}
 .nav-toggle {
   width: 100%;
   border: none;
@@ -89,12 +103,14 @@ a {
   align-items: center;
   justify-content: space-between;
   font: inherit;
+  font-size: 16px;
 }
 
 .nav-item:hover,
 .nav-toggle:hover {
   background: #f1f5f9;
   color: #0f172a;
+  transform: translateY(-9px);
 }
 
 .nav-item.active {
