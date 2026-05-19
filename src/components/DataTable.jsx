@@ -167,11 +167,15 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
               <tr key={rowIndex}>
                 {columns.map((col) => {
                   const isSalary =
-                    col.includes("משכורת") ||
-                    col.includes("ברוטו") ||
-                    col.includes("בסוף שבוע") ||
-                    col.includes("וסייר") ||
-                    col.includes("שכר");
+                    (
+                      col.includes("משכורת") ||
+                      col.includes("ברוטו") ||
+                      col.includes("בסוף שבוע") ||
+                      col.includes("וסייר") ||
+                      col.includes("שכר")
+                    ) &&
+                    !col.includes("דרגת שכר");
+
 
                   const isPercent =
                     col.includes("אחוז") ||
