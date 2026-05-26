@@ -430,7 +430,7 @@ tbody td {
 
 .salary-cell {
   font-weight: 900;
-  color: #153986 !important;
+  color: #0a204e !important;
   /* שינינו מ- #ffffffb7 ל- transparent כדי לבטל את חסימת הצבע */
 }
 
