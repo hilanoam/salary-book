@@ -1,20 +1,25 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading = false }) {
   const [globalSearch, setGlobalSearch] = useState("");
   const [filters, setFilters] = useState({});
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+  const navigate = useNavigate();
 
   const columns = useMemo(() => {
     if (!rows || rows.length === 0) return [];
     return Object.keys(rows[0]);
   }, [rows]);
 
-  const isProfessionsTable =
-  columns.includes("מקצוע") ||
-  columns.includes("מספר מקצוע") ||
-  columns.includes("קבוצת פעילות") ||
-  columns.includes("רמת פעילות");
+  const isProfessionsTable = useMemo(() => {
+    return (
+      columns.includes("מקצוע") ||
+      columns.includes("מספר מקצוע") ||
+      columns.includes("קבוצת פעילות") ||
+      columns.includes("רמת פעילות")
+    );
+  }, [columns]);
 
   const filteredRows = useMemo(() => {
     if (!rows) return [];
@@ -55,7 +60,7 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
 
         return sortConfig.direction === "asc"
           ? String(aValue ?? "").localeCompare(String(bValue ?? ""), "he")
-          : String(bValue ?? "").localeCompare(String(aValue ?? ""), "he");
+          : String(bValue ?? "").localeCompare(String(bValue ?? ""), "he");
       });
     }
 
@@ -75,6 +80,19 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
     });
   }
 
+  function handleRowClick(row) {
+    if (!isProfessionsTable) return;
+
+    const group =
+      row["קבוצת פעילות"] ||
+      row["קבוצת תמריץ"] ||
+      row["קבוצה"];
+
+    if (!group) return;
+
+    navigate(`/sergeants/group/${encodeURIComponent(group)}`);
+  }
+
   function updateFilter(column, value) {
     setFilters((prev) => ({
       ...prev,
@@ -87,6 +105,7 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
     setFilters({});
     setSortConfig({ key: null, direction: "asc" });
   }
+
   if (loading) {
     return (
       <div className="loader-container">
@@ -100,24 +119,29 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
     return <div className="empty-state">אין נתונים להצגה</div>;
   }
 
+  // בדיקת קיום עמודות גמול לצורך החישוב הצבעוני
+  const hasGemulA = columns.includes("גמול א'");
+  const hasGemulB = columns.includes("גמול ב'");
+
   return (
     <div className="smart-table-card">
-      <div className="table-toolbar">
+      {showToolbar && (
+        <div className="table-toolbar">
+          <div className="toolbar-actions">
+            <input
+              className="table-search"
+              type="text"
+              placeholder="חיפוש כללי בטבלה..."
+              value={globalSearch}
+              onChange={(e) => setGlobalSearch(e.target.value)}
+            />
 
-        <div className="toolbar-actions">
-          <input
-            className="table-search"
-            type="text"
-            placeholder="חיפוש כללי בטבלה..."
-            value={globalSearch}
-            onChange={(e) => setGlobalSearch(e.target.value)}
-          />
-
-          <button className="clear-btn" type="button" onClick={clearFilters}>
-            איפוס
-          </button>
+            <button className="clear-btn" type="button" onClick={clearFilters}>
+              איפוס
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {showColumnFilters && (
         <div className="column-filters">
@@ -163,53 +187,90 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
           </thead>
 
           <tbody>
-            {filteredRows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {columns.map((col) => {
-                  const isSalary =
-                    (
-                      col.includes("משכורת") ||
-                      col.includes("ברוטו") ||
-                      col.includes("בסוף שבוע") ||
-                      col.includes("וסייר") ||
-                      col.includes("שכר")
-                    ) &&
-                    !col.includes("דרגת שכר");
+            {filteredRows.map((row, rowIndex) => {
+              // חישוב אובייקט הסטייל לפי סטטוס הגמולים בשורה
+              let cellStyle = {};
 
+              if (hasGemulA) {
+                const valA = row["גמול א'"];
+                const valB = row["גמול ב'"];
 
-                  const isPercent =
-                    col.includes("אחוז") ||
-                    col.includes("אחוז תמריץ");
+                if (!hasGemulB) {
+                  // מקרה של גמול א' בלבד
+                  if (valA === "כן") {
+                    cellStyle = { backgroundColor: "#d4edda52", color: "#155724" };
+                  } else if (valA === "לא") {
+                    cellStyle = { backgroundColor: "#f8d7da86", color: "#721c24" };
+                  }
+                } else {
+                  // מקרה של גמול א' וגם גמול ב'
+                  if (valA === "לא" && valB === "לא") {
+                    cellStyle = { backgroundColor: "#f8d7da86", color: "#721c24" };
+                  } else if (valA === "כן" && valB === "לא") {
+                    cellStyle = { backgroundColor: "#ffe8cc7e", color: "#a0522d" };
+                  } else if (valA === "כן" && valB === "כן") {
+                    cellStyle = { backgroundColor: "#d4edda70", color: "#155724" };
+                  }
+                }
+              }
 
-                  return (
-                    <td key={col} className={isSalary ? "salary-cell" : ""}>
-                      {(() => {
-                        let value = row[col];
+              return (
+                <tr
+                  key={rowIndex}
+                  onClick={() => handleRowClick(row)}
+                  style={{
+                    cursor: isProfessionsTable ? "pointer" : "default"
+                  }}
+                >
+                  {columns.map((col) => {
+                    const isSalary =
+                      (
+                        col.includes("משכורת") ||
+                        col.includes("ברוטו") ||
+                        col.includes("בסוף שבוע") ||
+                        col.includes("וסייר") ||
+                        col.includes("שכר")
+                      ) &&
+                      !col.includes("דרגת שכר");
 
-                        if (value === "אחיד") {
-                          value = "אחיד / טכנאי לא ישים";
-                        }
+                    const isPercent =
+                      col.includes("אחוז") ||
+                      col.includes("אחוז תמריץ");
 
-                        const num = Number(value);
+                    return (
+                      <td 
+                        key={col} 
+                        className={isSalary ? "salary-cell" : ""}
+                        style={cellStyle} // הזרקת הרקע הדינמי לכל תא ותא
+                      >
+                        {(() => {
+                          let value = row[col];
 
-                        if (!isNaN(num) && value !== "") {
-                          if (isProfessionsTable) {
-                            return value; // ללא פסיקים בטבלת המקצועות
+                          if (value === "אחיד") {
+                            value = "אחיד / טכנאי לא ישים";
                           }
 
-                          return num.toLocaleString("he-IL");
-                        }
+                          const num = Number(value);
 
-                        return value ?? "";
-                      })()}
+                          if (!isNaN(num) && value !== "") {
+                            if (isProfessionsTable) {
+                              return value;
+                            }
 
-                      {isPercent && row[col] ? "%" : ""}
-                      {isSalary && row[col] ? " ₪" : ""}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
+                            return num.toLocaleString("he-IL");
+                          }
+
+                          return value ?? "";
+                        })()}
+
+                        {isPercent && row[col] ? "%" : ""}
+                        {isSalary && row[col] ? " ₪" : ""}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

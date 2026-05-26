@@ -74,7 +74,7 @@ function OfficersTypePage() {
         </header>
 
         <div className="intro-body">
-          <DataTable rows={rows} loading={loading} />
+          <DataTable key={type} rows={rows} loading={loading} />
         </div>
       </section>
     </div>

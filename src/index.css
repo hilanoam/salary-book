@@ -431,7 +431,7 @@ tbody td {
 .salary-cell {
   font-weight: 900;
   color: #153986 !important;
-  background: #ffffffb7 !important;
+  /* שינינו מ- #ffffffb7 ל- transparent כדי לבטל את חסימת הצבע */
 }
 
 .empty-state {
@@ -771,6 +771,16 @@ tbody td {
   object-fit: contain;
 }
 
+.salary-table tbody tr {
+  transition:  0.05s ease;
+}
+
+.salary-table tbody tr[style*="pointer"]:hover td {
+  background: #dbeafe !important;
+}
+
+
+
 /* ===== Mobile ===== */
 
 .mobile-menu-btn {
@@ -921,4 +931,67 @@ tbody td {
   .site-footer-logo img {
     width: 100%;
   }
+}
+
+.profile-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.summary-item {
+  background: #f8fbff;
+  border: 1px solid #dbe7f3;
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.summary-highlight {
+  background: linear-gradient(
+    135deg,
+    #e8f2ff,
+    #f6fbff
+  );
+  border: 1px solid #b8d4ff;
+}
+
+.summary-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4d6480;
+}
+
+.summary-value {
+  font-size: 17px;
+  font-weight: 800;
+  color: #10243e;
+  word-break: break-word;
+}
+.reset-profile-btn {
+  margin: 22px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  border: 0;
+  border-radius: 18px;
+  padding: 14px 26px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 16px;
+  color: #1e3a5f;
+  background: linear-gradient(135deg, #eef6ff, #ffffff);
+  border: 1px solid #cfe0f5;
+  box-shadow: 0 8px 20px rgba(30, 58, 95, 0.12);
+  margin-bottom: 18px ;
+}
+
+.reset-profile-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #e3f0ff, #ffffff);
 }

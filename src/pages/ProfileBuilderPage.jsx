@@ -3,6 +3,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { loadJson } from "../services/dataService";
 import DataTable from "../components/DataTable";
+
 const FILTERS_BY_TYPE = {
     נגד: [
     { key: "מקצוע", label: "מקצוע", displayOnly: true },
@@ -64,10 +65,12 @@ function ProfileBuilderPage() {
       }
 
       if (employeeType === "קצין") {
-        const inspectors = await loadJson("inspectors.json").catch(() => []);
-        const lawyers = await loadJson("lawyers.json").catch(() => []);
-        const captain = await loadJson("captain.json").catch(() => []);
-        const major = await loadJson("major.json").catch(() => []);
+        const [inspectors, lawyers, captain, major] = await Promise.all([
+          loadJson("inspectors.json").catch(() => []),
+          loadJson("lawyers.json").catch(() => []),
+          loadJson("captain.json").catch(() => []),
+          loadJson("major.json").catch(() => [])
+        ]);
 
         setSalaryRows([...inspectors, ...lawyers, ...captain, ...major]);
       }
@@ -92,12 +95,16 @@ function ProfileBuilderPage() {
     );
     }, [professionsRows]);
 
+  // עדכון הפונקציה למניעת נעילה בין קבוצת תמריץ לאחוז תמריץ
   function getRowsForField(currentKey) {
     return salaryRows.filter((row) =>
       Object.entries(filters).every(([key, value]) => {
         if (!value) return true;
         if (key === currentKey) return true;
         if (key === "מקצוע") return true;
+
+        // משחרר את הנעילה ההדדית: כשמחשבים אופציות לקבוצת תמריץ, מתעלמים מהאחוז שנבחר ב"תמריץ חדש"
+        if (currentKey === "קבוצת תמריץ" && key === "תמריץ חדש") return true;
 
         return String(row[key] ?? "") === String(value);
       })
@@ -114,10 +121,8 @@ function ProfileBuilderPage() {
 
 const visibleFields = useMemo(() => {
   return currentFields.filter((field) => {
-    // מקצוע תמיד מוצג
     if (field.displayOnly) return true;
 
-    // "רמה" תופיע רק כאשר דרגת השכר היא "פקד"
     if (field.key === "רמה") {
       return filters["דרגת שכר"] === "פקד";
     }
@@ -126,10 +131,8 @@ const visibleFields = useMemo(() => {
 
     if (options.length === 0) return false;
 
-    // אם כבר נבחר ערך – נשאיר את השדה מוצג
     if (filters[field.key]) return true;
 
-    // אם השדה הוגדר להסתרה כאשר יש רק אפשרות אחת
     if (field.hideIfSingleOption && options.length <= 1) {
       return false;
     }
@@ -137,12 +140,44 @@ const visibleFields = useMemo(() => {
     return true;
   });
 }, [currentFields, salaryRows, professionsRows, filters]);
+
   function updateFilter(key, value) {
     setFilters((prev) => {
       const next = {
         ...prev,
         [key]: value,
       };
+
+      if (employeeType === "נגד" && (key === "מקצוע" || (key === "דרגת שכר" && next["מקצוע"]))) {
+        const targetProfStr = key === "מקצוע" ? value : next["מקצוע"];
+        
+        const foundProfession = professionsRows.find((row) => {
+          const number = row["מספר מקצוע"] ?? "";
+          const name = row["שם מקצוע"] || row["מקצוע"] || "";
+          const optStr = number && name ? `${number} - ${name}` : String(name || number);
+          return optStr === targetProfStr;
+        });
+
+        if (foundProfession) {
+          if (key === "מקצוע" && foundProfession["קבוצת תמריץ"] !== undefined) {
+            next["קבוצת תמריץ"] = String(foundProfession["קבוצת תמריץ"]);
+          }
+
+          const currentRank = next["דרגת שכר"];
+          if (currentRank) {
+            let percentVal = null;
+            if (currentRank.includes("רס\"ל")) {
+              percentVal = foundProfession["אחוז תמריץ רס\"ל"];
+            } else {
+              percentVal = foundProfession["אחוז תמריץ רס\"ר- רנ\"ג"];
+            }
+
+            if (percentVal !== undefined && percentVal !== null) {
+              next["תמריץ חדש"] = `${percentVal}%`;
+            }
+          }
+        }
+      }
 
       currentFields.forEach((field) => {
         if (field.key === key) return;
@@ -280,7 +315,17 @@ const visibleFields = useMemo(() => {
                 ))}
             </div>
           </div>
-
+            <button
+              type="button"
+              className="reset-profile-btn"
+              onClick={() => {
+                setEmployeeType("");
+                setFilters({});
+                setSalaryRows([]);
+              }}
+            >
+              איפוס פרופיל
+            </button>
           {employeeType && filteredRows.length > 1 && (
             <p className="results-counter">
               נמצאו {filteredRows.length} אפשרויות מתאימות. המשיכי לסנן עד לקבלת תוצאה אחת.
@@ -305,20 +350,24 @@ const visibleFields = useMemo(() => {
                 </div>
                 <h2>תוצאת פרופיל שכר</h2>
 
-                <div className="profile-summary">
+                <div className="profile-summary-grid">
                   {filters["מקצוע"] && (
-                    <p>
-                      <strong>מקצוע:</strong> {filters["מקצוע"]}
-                    </p>
+                    <div className="summary-item summary-highlight">
+                      <span className="summary-label">מקצוע</span>
+                      <span className="summary-value">{filters["מקצוע"]}</span>
+                    </div>
                   )}
 
                   {Object.entries(selectedSalaryRow).map(([key, value]) => (
-                    <p key={key}>
-                      <strong>{key}:</strong>{" "}
-                      {key.includes("משכורת")
-                        ? `${Number(value).toLocaleString("he-IL")} ₪`
-                        : String(value)}
-                    </p>
+                    <div className="summary-item" key={key}>
+                      <span className="summary-label">{key}</span>
+
+                      <span className="summary-value">
+                        {key.includes("משכורת")
+                          ? `${Number(value).toLocaleString("he-IL")} ₪`
+                          : String(value)}
+                      </span>
+                    </div>
                   ))}
                 </div>
 
