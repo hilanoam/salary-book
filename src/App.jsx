@@ -12,6 +12,7 @@ import ProfileBuilderPage from "./pages/ProfileBuilderPage";
 import SergeantsGroupPage from "./pages/SergeantsGroupPage";
 import OfficersPage from "./pages/OfficersPage";
 import OfficersTypePage from "./pages/OfficersTypePage";
+import UserGuidePage from "./pages/UserGuidePage";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Route path="jerusalem" element={<JerusalemPage />} />
         <Route path="/profile-builder" element={<ProfileBuilderPage />} />
         <Route path="sergeants" element={<SergeantsPage />} />
-       
+        <Route path="user-guide" element={<UserGuidePage />} />
         <Route path="sergeants/group/:groupId" element={<SergeantsGroupPage />} />
 
         <Route path="officers" element={<OfficersPage />} />

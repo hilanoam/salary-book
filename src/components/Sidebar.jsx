@@ -18,6 +18,10 @@ function Sidebar({ isOpen, onClose }) {
         <NavLink to="/home"  onClick={onClose} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
           הקדמה
         </NavLink>
+       
+        <NavLink to="/user-guide" onClick={onClose} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+          מדריך משתמש
+        </NavLink>
 
         <NavLink to="/salary-intro"  onClick={onClose} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
           שכר מתגייסים
