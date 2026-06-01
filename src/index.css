@@ -996,3 +996,40 @@ tbody td {
   background: linear-gradient(135deg, #e3f0ff, #ffffff);
 }
 
+/* ===== Sidebar Brand Design ===== */
+
+.sidebar-brand {
+  padding: 22px 18px;
+  margin-bottom: 28px;
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(239, 246, 255, 0.95), rgba(255, 255, 255, 0.85));
+  border: 1px solid #dbeafe;
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.08);
+  text-align: center;
+}
+
+.sidebar-brand h2 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  color: #16324f;
+  letter-spacing: -0.5px;
+}
+
+.sidebar-brand p {
+  margin: 8px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.sidebar-brand::after {
+  content: "";
+  display: block;
+  width: 58px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #93c5fd, #2563eb);
+}

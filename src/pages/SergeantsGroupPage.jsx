@@ -38,7 +38,10 @@ function SergeantsGroupPage() {
         </header>
 
         <div className="intro-body">
-          <DataTable rows={filteredRows} loading={loading} />
+          <DataTable
+            key={groupId}
+            rows={filteredRows}
+          />
         </div>
       </section>
     </div>

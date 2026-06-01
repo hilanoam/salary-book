@@ -47,6 +47,7 @@ function ProfileBuilderPage() {
   const [salaryRows, setSalaryRows] = useState([]);
   const [professionsRows, setProfessionsRows] = useState([]);
   const [filters, setFilters] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadJson("professions.json")
@@ -56,24 +57,35 @@ function ProfileBuilderPage() {
 
   useEffect(() => {
     async function loadData() {
-      setSalaryRows([]);
-      setFilters({});
+      try {
+        setLoading(true);
+        setSalaryRows([]);
+        setFilters({});
 
-      if (employeeType === "נגד") {
-        const data = await loadJson("sergeants.json").catch(() => []);
-        setSalaryRows(data);
-      }
+        if (employeeType === "נגד") {
+          const data = await loadJson("sergeants.json").catch(() => []);
+          setSalaryRows(data);
+        }
 
-      if (employeeType === "קצין") {
-        const [inspectors, lawyers, captain, major] = await Promise.all([
-          loadJson("inspectors.json").catch(() => []),
-          loadJson("lawyers.json").catch(() => []),
-          loadJson("captain.json").catch(() => []),
-          loadJson("major.json").catch(() => [])
-        ]);
+        if (employeeType === "קצין") {
+          const [inspectors, lawyers, captain, major] = await Promise.all([
+            loadJson("inspectors.json").catch(() => []),
+            loadJson("lawyers.json").catch(() => []),
+            loadJson("captain.json").catch(() => []),
+            loadJson("major.json").catch(() => [])
+          ]);
 
-        setSalaryRows([...inspectors, ...lawyers, ...captain, ...major]);
-      }
+          setSalaryRows([...inspectors, ...lawyers, ...captain, ...major]);
+        }
+
+        } catch (err) {
+          console.error(err);
+        } finally {
+            setTimeout(() => {
+              setLoading(false);
+            }, 300);
+          
+        }
     }
 
     if (employeeType) {
@@ -245,6 +257,22 @@ const visibleFields = useMemo(() => {
 
     pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
     pdf.save("salary-profile.pdf");
+  }
+  if (loading) {
+    return (
+      <div className="page-wrapper">
+        {loading && (
+          <div className="page-loading-overlay">
+            <div className="loader"></div>
+            <p>טוען נתוני שכר...</p>
+          </div>
+        )}
+
+        <section className="intro-page">
+          ...
+        </section>
+      </div>
+    );
   }
 
   return (
