@@ -1033,3 +1033,25 @@ tbody td {
   border-radius: 999px;
   background: linear-gradient(90deg, #93c5fd, #2563eb);
 }
+
+.content-note {
+  margin-top: 40px;
+  padding: 18px 20px;
+  background: #fef2f2;
+  border-radius: 12px;
+  color: #991b1b;
+}
+
+.content-note strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #b91c1c;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content-note p {
+  margin: 0;
+  color: #7f1d1d;
+  line-height: 1.8;
+}

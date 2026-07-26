@@ -128,3 +128,26 @@
     line-height: 1.8;
   }
 }
+
+.content-note {
+  margin-top: 40px;
+  padding: 18px 20px;
+  border: 2px solid #dc2626;
+  background: #fef2f2;
+  border-radius: 12px;
+  color: #991b1b;
+}
+
+.content-note strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #b91c1c;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content-note p {
+  margin: 0;
+  color: #7f1d1d;
+  line-height: 1.8;
+}

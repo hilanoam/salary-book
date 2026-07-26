@@ -34,7 +34,7 @@ function PersonalExpensesPage() {
           </p>
 
           <p>
-            התשלום כולל אש״ל גלובלי, הכולל הוצאות אוכל, שתייה ולינה,
+            התשלום כולל אש״ל גלובלי (הוצאות אוכל, שתייה ולינה),
             וכן הוצאות טלפון לפי דרגה.
           </p>
 
@@ -85,7 +85,7 @@ function PersonalExpensesPage() {
 
           <div className="content-note">
             <strong>לתשומת לבכם:</strong>
-            <p>*המידע מעודכן לתאריך 01.05.2026</p>
+            <p>המידע מעודכן לתאריך 01.07.2026</p>
           </div>
         </div>
       </section>
