@@ -103,9 +103,11 @@ function Sidebar({ isOpen, onClose }) {
                 מפקח
               </NavLink>
 
-              <NavLink to="/officers/lawyers"  onClick={onClose} className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
-                משפטנים
-              </NavLink>
+             {/*
+               <NavLink to="/officers/lawyers"  onClick={onClose} className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
+               משפטנים
+              </NavLink> 
+              */}
 
               <NavLink to="/officers/captain"  onClick={onClose} className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
                 פקד

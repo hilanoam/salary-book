@@ -154,13 +154,22 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
               >
                 <option value="">הכל</option>
 
-                {[...new Set(rows.map((row) => row[col]).filter(Boolean))]
-                  .sort((a, b) => String(a).localeCompare(String(b), "he"))
-                  .map((value) => (
-                    <option key={value} value={value}>
-                      {value}
-                    </option>
-                  ))}
+                {[...new Set(
+                    rows
+                      .map((row) => row[col])
+                      .filter(
+                        (value) =>
+                          value !== null &&
+                          value !== undefined &&
+                          value !== ""
+                      )
+                  )]
+                    .sort((a, b) => String(a).localeCompare(String(b), "he"))
+                    .map((value) => (
+                      <option key={value} value={value}>
+                        {value}
+                      </option>
+                    ))}
               </select>
             </div>
           ))}
@@ -257,7 +266,9 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                               return value;
                             }
 
-                            return num.toLocaleString("he-IL");
+                            return isSalary
+                              ? Math.round(num).toLocaleString("he-IL")
+                              : num.toLocaleString("he-IL");
                           }
 
                           return value ?? "";
