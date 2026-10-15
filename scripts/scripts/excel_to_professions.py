@@ -4,7 +4,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-file_path = BASE_DIR / "חוברת1.xlsx"
+file_path = BASE_DIR / "טבלת מקצועות.xlsx"
 output_path = BASE_DIR / "public" / "data" / "professions.json"
 output_path.parent.mkdir(parents=True, exist_ok=True)
 
