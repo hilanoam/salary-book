@@ -89,14 +89,19 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
   function handleRowClick(row) {
     if (!isProfessionsTable) return;
 
-    const group =
-      row["קבוצת פעילות"] ||
-      row["קבוצת תמריץ"] ||
-      row["קבוצה"];
+    const group = row["קבוצת תמריץ"];
 
-    if (!group) return;
+    // מעבר רק אם קבוצת התמריץ היא מספר תקין
+    if (
+      group === null ||
+      group === undefined ||
+      String(group).trim() === "" ||
+      !/^\d+$/.test(String(group).trim())
+    ) {
+      return;
+    }
 
-    navigate(`/sergeants/group/${encodeURIComponent(group)}`);
+    navigate(`/sergeants/group/${encodeURIComponent(String(group).trim())}`);
   }
 
   function updateFilter(column, value) {
@@ -225,7 +230,11 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                   key={rowIndex}
                   onClick={() => handleRowClick(row)}
                   style={{
-                    cursor: isProfessionsTable ? "pointer" : "default"
+                    cursor:
+                      isProfessionsTable &&
+                      /^\d+$/.test(String(row["קבוצת תמריץ"] ?? "").trim())
+                        ? "pointer"
+                        : "default"
                   }}
                 >
                   {columns.map((col) => {
