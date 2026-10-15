@@ -145,7 +145,7 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
 
       {showColumnFilters && (
         <div className="column-filters">
-          {columns.map((col) => (
+          {columns.filter((col) => col !== "שכר ברוטו").map((col) => (
             <div className="filter-field" key={col}>
               <label>{col}</label>
               <select
@@ -265,7 +265,7 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                           return value ?? "";
                         })()}
 
-                        {isPercent && row[col] ? "%" : ""}
+                        {isPercent && row[col] !== "-" && row[col] !== "" && row[col] !== null && row[col] !== undefined ? "%" : ""}
                         {isSalary && row[col] ? " ₪" : ""}
                       </td>
                     );
