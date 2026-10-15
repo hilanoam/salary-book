@@ -1102,3 +1102,13 @@ tbody td {
   color: #7445b8;
   margin-bottom: 6px;
 }
+
+.salary-agreement-note {
+  display: block;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #e8ddf5;
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+}

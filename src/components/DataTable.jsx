@@ -280,6 +280,10 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                                       01.10.2026 תחול תוספת שכר של
                                       2,000 ₪ ברוטו לחודש למקצוע זה.
                                     </span>
+                                    <span className="salary-agreement-note">
+                                      * התוספת אינה משוקללת בנתוני השכר
+                                      המוצגים בטבלה.
+                                    </span>
                                   </span>
                                 )}
                               </span>
