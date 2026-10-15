@@ -145,7 +145,7 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
 
       {showColumnFilters && (
         <div className="column-filters">
-          {columns.filter((col) => col !== "שכר ברוטו").map((col) => (
+          {columns.filter((col) => col !== "סה\"כ משכורת ברוטו").map((col) => (
             <div className="filter-field" key={col}>
               <label>{col}</label>
               <select
