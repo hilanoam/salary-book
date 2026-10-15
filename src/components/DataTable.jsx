@@ -249,7 +249,6 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                         className={isSalary ? "salary-cell" : ""}
                         style={cellStyle} // הזרקת הרקע הדינמי לכל תא ותא
                       >
-                        {(() => {
                           {col === "מספר מקצוע" &&
                             salaryAgreementProfessions.has(String(row[col])) && (
                               <span
@@ -288,6 +287,7 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                                 )}
                               </span>
                             )}
+                          {(() => { 
                           let value = row[col];
 
                           if (value === "אחיד") {
