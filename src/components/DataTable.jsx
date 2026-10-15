@@ -1,12 +1,18 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+const salaryAgreementProfessions = new Set([
+  "20117",
+  "10193",
+  "20107",
+  "20147"
+]);
 
 function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading = false }) {
   const [globalSearch, setGlobalSearch] = useState("");
   const [filters, setFilters] = useState({});
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const navigate = useNavigate();
-
+  const [openAgreement, setOpenAgreement] = useState(null);
   const columns = useMemo(() => {
     if (!rows || rows.length === 0) return [];
     return Object.keys(rows[0]);
@@ -244,6 +250,40 @@ function DataTable({ rows, showToolbar = true, showColumnFilters = true, loading
                         style={cellStyle} // הזרקת הרקע הדינמי לכל תא ותא
                       >
                         {(() => {
+                          {col === "מספר מקצוע" &&
+                            salaryAgreementProfessions.has(String(row[col])) && (
+                              <span
+                                className="salary-agreement-info"
+                                onClick={(e) => e.stopPropagation()}
+                                title="עדכון הסכם שכר"
+                              >
+                                <button
+                                  type="button"
+                                  className="salary-agreement-icon"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setOpenAgreement(
+                                      openAgreement === String(row[col])
+                                        ? null
+                                        : String(row[col])
+                                    );
+                                  }}
+                                >
+                                  !
+                                </button>
+
+                                {openAgreement === String(row[col]) && (
+                                  <span className="salary-agreement-popup">
+                                    <strong>עדכון הסכם שכר</strong>
+                                    <span>
+                                      בהתאם להסכמי השכר שנחתמו, החל מיום
+                                      01.10.2026 תחול תוספת שכר של
+                                      2,000 ₪ ברוטו לחודש למקצוע זה.
+                                    </span>
+                                  </span>
+                                )}
+                              </span>
+                            )}
                           let value = row[col];
 
                           if (value === "אחיד") {

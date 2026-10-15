@@ -1055,3 +1055,50 @@ tbody td {
   color: #7f1d1d;
   line-height: 1.8;
 }
+
+.salary-agreement-info {
+  display: inline-flex;
+  position: relative;
+  margin-inline-end: 8px;
+  vertical-align: middle;
+}
+
+.salary-agreement-icon {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  border: none;
+  background: #7445b8;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.salary-agreement-popup {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  z-index: 100;
+  width: 270px;
+  padding: 15px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 5px 22px #0002;
+  border: 1px solid #e8ddf5;
+  color: #333;
+  text-align: right;
+  white-space: normal;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.salary-agreement-popup strong,
+.salary-agreement-popup span {
+  display: block;
+}
+
+.salary-agreement-popup strong {
+  color: #7445b8;
+  margin-bottom: 6px;
+}
