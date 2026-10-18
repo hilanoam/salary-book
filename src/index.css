@@ -1227,3 +1227,42 @@ tbody td {
     min-width: 580px;
   }
 }
+
+
+.students-rate-general-note {
+  padding: 24px 28px;
+  background: #f8fafc;
+  border-right: 4px solid #64748b;
+  border-radius: 12px;
+  margin: 28px 0;
+  text-align: right;
+}
+
+.students-rate-general-note h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 18px;
+  color: #243247;
+}
+
+.students-rate-general-note ul {
+  margin: 0;
+  padding-right: 24px;
+  list-style-type: disc;
+}
+
+.students-rate-general-note li {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.9;
+  margin-bottom: 12px;
+  color: #334155;
+}
+
+.students-rate-general-note li:last-child {
+  margin-bottom: 0;
+}
+
+.students-rate-general-note strong {
+  font-weight: 800;
+}
