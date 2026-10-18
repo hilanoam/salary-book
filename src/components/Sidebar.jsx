@@ -46,6 +46,10 @@ function Sidebar({ isOpen, onClose }) {
         <NavLink to="/jerusalem"  onClick={onClose} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
           מחוז ירושלים - גיוס בדרגת שכר רס"ר 8
         </NavLink>
+
+        <NavLink to="/station"  onClick={onClose} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+          קפ"ז תחנות
+        </NavLink>
         
         <NavLink
           to="/profile-builder"
