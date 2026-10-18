@@ -7,7 +7,7 @@ import ProfessionsPage from "./pages/ProfessionsPage";
 import StudentsPage from "./pages/StudentsPage";
 import RetireesPage from "./pages/RetireesPage";
 import JerusalemPage from "./pages/JerusalemPage";
-import stationPage from "./pages/stationPage";
+import stationPage from "./pages/StationPage";
 import SergeantsPage from "./pages/SergeantsPage";
 import ProfileBuilderPage from "./pages/ProfileBuilderPage";
 import SergeantsGroupPage from "./pages/SergeantsGroupPage";
@@ -27,7 +27,7 @@ function App() {
         <Route path="students" element={<StudentsPage />} />
         <Route path="retirees" element={<RetireesPage />} />
         <Route path="jerusalem" element={<JerusalemPage />} />
-        <Route path="station" element={<stationPage />} />
+        <Route path="station" element={<StationPage />} />
         <Route path="/profile-builder" element={<ProfileBuilderPage />} />
         <Route path="sergeants" element={<SergeantsPage />} />
         <Route path="user-guide" element={<UserGuidePage />} />
