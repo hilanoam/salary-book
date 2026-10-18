@@ -7,6 +7,7 @@ import ProfessionsPage from "./pages/ProfessionsPage";
 import StudentsPage from "./pages/StudentsPage";
 import RetireesPage from "./pages/RetireesPage";
 import JerusalemPage from "./pages/JerusalemPage";
+import stationPage from "./pages/stationPage";
 import SergeantsPage from "./pages/SergeantsPage";
 import ProfileBuilderPage from "./pages/ProfileBuilderPage";
 import SergeantsGroupPage from "./pages/SergeantsGroupPage";
@@ -31,7 +32,6 @@ function App() {
         <Route path="sergeants" element={<SergeantsPage />} />
         <Route path="user-guide" element={<UserGuidePage />} />
         <Route path="sergeants/group/:groupId" element={<SergeantsGroupPage />} />
-
         <Route path="officers" element={<OfficersPage />} />
         <Route path="officers/:type" element={<OfficersTypePage />} />
       </Route>

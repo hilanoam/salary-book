@@ -1,4 +1,4 @@
-function JerusalemPage() {
+function stationPage() {
   return (
     <div className="page-wrapper">
       <section className="intro-page">
@@ -8,7 +8,7 @@ function JerusalemPage() {
           alt="לוגו מחלקת שכר"
           className="header-logo"
         />
-          <h1>מחוז ירושלים</h1>
+          <h1>קפ"ז תחנות</h1>
 
           <p className="intro-subtitle">
             גיוס בדרגת שכר רס״ר 8
@@ -57,4 +57,4 @@ function JerusalemPage() {
   );
 }
 
-export default JerusalemPage;
+export default stationPage;
