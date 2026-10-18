@@ -7,12 +7,12 @@ function HomePage() {
           alt="לוגו מחלקת שכר"
           className="header-logo" 
         />
-        <div className="intro-badge">גרסה 01 · 01.05.2026</div>
+        <div className="intro-badge">גרסה 01 · 01.10.2026</div>
 
         <h1>חוברת שכר למתגייסים</h1>
 
         <p className="intro-subtitle">
-          מחלקת שכר וגמלאות · חשבות המשטרה
+           חשבות המשטרה  ·  מחלקת שכר וגמלאות
         </p>
 
         <p className="intro-credit">
