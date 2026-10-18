@@ -1112,3 +1112,118 @@ tbody td {
   color: #777;
   line-height: 1.6;
 }
+
+
+/* Students page – section titles */
+.students-section-title {
+  margin: 32px 0 14px;
+  font-size: 21px;
+  font-weight: 700;
+  color: inherit;
+  text-align: right;
+}
+
+.students-section-description {
+  margin-bottom: 18px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: right;
+}
+
+/* Accordion */
+.students-rate-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.students-rate-group {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.students-rate-toggle {
+  width: 100%;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: #f8fafc;
+  color: #243247;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: right;
+}
+
+.students-rate-toggle:hover {
+  background: #f1f5f9;
+}
+
+.students-rate-arrow {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.students-rate-content {
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.students-rate-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  font-size: 14px;
+}
+
+.students-rate-table th,
+.students-rate-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+.students-rate-table th {
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+.students-rate-table td div + div {
+  margin-top: 6px;
+}
+
+.students-rate-percent {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.students-rate-general-note {
+  padding: 14px 18px;
+  background: #f8fafc;
+  border-right: 3px solid #94a3b8;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 18px 0 26px;
+}
+
+@media (max-width: 600px) {
+  .students-section-title {
+    font-size: 18px;
+  }
+
+  .students-rate-toggle {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .students-rate-table {
+    min-width: 580px;
+  }
+}
