@@ -85,7 +85,7 @@ function PersonalExpensesPage() {
 
           <div className="content-note">
             <strong>לתשומת לבכם:</strong>
-            <p>המידע מעודכן לתאריך 01.07.2026</p>
+            <p>המידע מעודכן לתאריך 01.10.2026</p>
           </div>
         </div>
       </section>
