@@ -172,10 +172,6 @@ function StudentsPage() {
             תעריפי שכר לפי תפקיד ושעות עבודה
           </h2>
 
-          <p className="students-section-description">
-            יש לבחור תפקיד להצגת פירוט התעריפים,
-            ימי העבודה והשעות המזכות.
-          </p>
 
           <div className="students-rate-list">
             {rates.map((group, index) => (
@@ -238,7 +234,7 @@ function StudentsPage() {
 
           <p className="students-emphasis">
             על כל שעת עבודה יזוכה הסטודנט
-            ב־1.51 ₪ דמי הבראה.
+            ב־1.72 ₪ דמי הבראה.
           </p>
 
           <div className="students-notes">
