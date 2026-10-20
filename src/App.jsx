@@ -7,7 +7,7 @@ import ProfessionsPage from "./pages/ProfessionsPage";
 import StudentsPage from "./pages/StudentsPage";
 import RetireesPage from "./pages/RetireesPage";
 import JerusalemPage from "./pages/JerusalemPage";
-import StationPage from "./pages/StationPage";
+import StationPage from "./pages/stationPage";
 import SergeantsPage from "./pages/SergeantsPage";
 import ProfileBuilderPage from "./pages/ProfileBuilderPage";
 import SergeantsGroupPage from "./pages/SergeantsGroupPage";
