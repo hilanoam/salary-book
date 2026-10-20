@@ -32,13 +32,13 @@ function UserGuidePage() {
         <h3>החזר הוצאות אישיות</h3>
 
           <ol className="numbered-list">
-            <li>
+  
               עמוד החזר הוצאות אישיות מרכז מידע על רכיבי החזר והוצאות
               אישיות הרלוונטיות לאוכלוסיות השונות.
-            </li>
+
           </ol>
 
-          <h3>עמוד טבלת מקצועות, קבוצות ותמריצים</h3>
+          <h3> טבלת מקצועות, קבוצות ותמריצים</h3>
 
           <ol className="numbered-list">
             <li>
@@ -68,22 +68,22 @@ function UserGuidePage() {
             <h3>סטודנטים</h3>
 
           <ol className="numbered-list">
-            <li>
+            
               עמוד סטודנטים מיועד להצגת נתונים והסברים הרלוונטיים
               לאוכלוסיית הסטודנטים.
-            </li>
+       
           </ol>
 
           <h3>שמ״ז גמלאי</h3>
 
           <ol className="numbered-list">
-            <li>
+            
               עמוד שמ״ז גמלאי מציג את פירוט תנאי ההעסקה ואוכלוסיית היעד.
-            </li>
+            
 
           </ol>
 
-        <h3>עמוד מחוז ירושלים</h3>
+        <h3> מחוז ירושלים</h3>
 
           <ol className="numbered-list">
             <li>
@@ -97,16 +97,16 @@ function UserGuidePage() {
             </li>
           </ol>
 
-          <h3>עמוד קפ"ז תחנות</h3>
+          <h3> קפ"ז תחנות</h3>
 
           <ol className="numbered-list">
 
-            <li>
+        
               במידע על קיצור פרקי הזמן לקידום בדרגות, תנאי הזכאות וההתחייבות לשירות בתחנות.
-            </li>
+      
           </ol>
             
-          <h3>עמוד בניית פרופיל שכר</h3>
+          <h3> בניית פרופיל שכר</h3>
 
           <ol className="numbered-list">
             <li>
@@ -167,7 +167,7 @@ function UserGuidePage() {
             </li>
           </ol>
 
-          <h3>עמוד שכר נגדים</h3>
+          <h3> שכר נגדים</h3>
 
           <ol className="numbered-list">
             <li>
@@ -190,7 +190,7 @@ function UserGuidePage() {
 
           </ol>
 
-          <h3>עמוד שכר קצינים</h3>
+          <h3> שכר קצינים</h3>
 
           <ol className="numbered-list">
             <li>
