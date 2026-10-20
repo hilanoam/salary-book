@@ -35,7 +35,7 @@ function App() {
         <Route path="officers" element={<OfficersPage />} />
         <Route path="officers/:type" element={<OfficersTypePage />} />
       </Route>
-    </Routes>
+    </Routes> 
   );
 }
 

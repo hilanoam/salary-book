@@ -14,7 +14,7 @@ const promotionRows = [
     duration: "—",
     note: 'עד לקידום דרגת כתף רס"ר לא יקודם בדרגת ביניים של רס"ר',
   },
-  {
+  { 
     currentRank: 'רס"ל',
     nextRank: 'רס"ר',
     payRank: "—",
