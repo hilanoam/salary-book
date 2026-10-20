@@ -1266,3 +1266,203 @@ tbody td {
 .students-rate-general-note strong {
   font-weight: 800;
 }
+
+
+/* ===== עמוד קפ"ז תחנות ===== */
+
+.station-content {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 20px 40px;
+  direction: rtl;
+}
+
+.station-date {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 20px;
+  background: #dbeafe;
+  color: #1e40af;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.station-intro {
+  background: #eff6ff;
+  border-right: 4px solid #1e40af;
+  border-radius: 10px;
+  padding: 22px;
+  line-height: 1.9;
+  margin-bottom: 25px;
+  color: #243247;
+}
+
+.station-section {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  padding: 25px 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 3px 12px rgba(30, 64, 175, 0.06);
+}
+
+.station-section h2 {
+  font-size: 20px;
+  color: #1e40af;
+  margin: 0 0 15px;
+  font-weight: 700;
+}
+
+.station-section p {
+  line-height: 1.9;
+  margin: 0 0 12px;
+  color: #334155;
+}
+
+/* ===== טבלת קידום דרגות ===== */
+
+.station-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+}
+
+.station-table {
+  width: 100%;
+  min-width: 750px;
+  border-collapse: collapse;
+  text-align: center;
+  background: #ffffff;
+}
+
+.station-table th {
+  background: #f8fafc;
+  color: #243247;
+  padding: 15px 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  border-bottom: 1px solid #dbe3ee;
+  border-left: 1px solid #dbe3ee;
+}
+
+.station-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #edf2f7;
+  border-left: 1px solid #dbe3ee;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #334155;
+}
+
+.station-table tbody tr:nth-child(even) {
+  background: #f0f7ff;
+}
+
+.station-table tbody tr:hover {
+  background: #dbeafe;
+  transition: background 0.2s ease;
+}
+
+.station-rank,
+.station-duration {
+  color: #1e40af !important;
+  font-weight: 700;
+}
+
+.station-duration {
+  white-space: nowrap;
+}
+
+.station-next-rank {
+  font-weight: 600;
+}
+
+.station-note {
+  text-align: right;
+  line-height: 1.7;
+  min-width: 200px;
+}
+
+.station-table-description {
+  color: #64748b !important;
+  margin-bottom: 18px !important;
+}
+
+.station-table-footnote {
+  margin-top: 14px !important;
+  font-size: 13px;
+  color: #64748b !important;
+}
+
+.station-footer-note {
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 25px;
+}
+
+/* ===== התאמה לנייד ===== */
+
+@media (max-width: 600px) {
+  .station-content {
+    padding: 0 12px 25px;
+  }
+
+  .station-section {
+    padding: 18px 14px;
+  }
+
+  .station-section h2 {
+    font-size: 18px;
+  }
+
+  .station-table th,
+  .station-table td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+}
+
+
+/* ===== עיצוב אחיד לטבלאות חוברת השכר ===== */
+
+.table-card table,
+.smart-table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* כותרות הטבלה */
+.table-card table th,
+.smart-table-card table th {
+  border-left: 1px solid #dbe3ee;
+  border-bottom: 1px solid #dbe3ee;
+}
+
+/* תאי הטבלה */
+.table-card table td,
+.smart-table-card table td {
+  border-left: 1px solid #dbe3ee;
+  border-bottom: 1px solid #edf2f7;
+}
+
+/* ביטול הקו בקצה האחרון */
+.table-card table th:last-child,
+.table-card table td:last-child,
+.smart-table-card table th:last-child,
+.smart-table-card table td:last-child {
+  border-left: none;
+}
+
+/* שורות מתחלפות */
+.table-card table tbody tr:nth-child(even),
+.smart-table-card table tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+/* מעבר עכבר */
+.table-card table tbody tr:hover,
+.smart-table-card table tbody tr:hover {
+  background: #eff6ff;
+}
