@@ -15,11 +15,6 @@ function HomePage() {
            חשבות המשטרה  ·  מחלקת שכר וגמלאות
         </p>
 
-        <p className="intro-credit">
-          החוברת נערכה ע"י חוליית פיתוח יישומי שכר וחוליית הסברה והדמיות שכר
-          <br />
-          מחלקת שכר וגמלאות
-        </p>
       </header>
 
       <div className="intro-body">
@@ -63,11 +58,56 @@ function HomePage() {
         </ul>
       </div>
 
-      <div className="official-signature">
-        <div className="signature-name">עדה בראל, נצ״ם</div>
-        <div>רמ״ח שכר וגמלאות</div>
-        <div>חשבות המשטרה</div>
-      </div>
+      
+        <div className="signatures-section">
+          <div className="signature-greeting">בברכה,</div>
+
+          <div className="official-signatures">
+           
+          <div className="official-signature">
+            <div className="signature-line signature-name">
+              <span>חגית</span>
+              <span>גולדשטיין</span>
+              <span>מויאל, תנ״צ</span>
+            </div>
+
+            <div className="signature-line">
+              <span>חשבת</span>
+              <span>משטרת</span>
+              <span>ישראל</span>
+            </div>
+
+            <div className="signature-line">
+              <span>חשבות</span>
+              <span>המשטרה</span>
+            </div>
+          </div>
+
+
+            
+          <div className="official-signature">
+            <div className="signature-line signature-name">
+              <span>עדה</span>
+              <span>בראל, נצ״מ</span>
+            </div>
+
+            <div className="signature-line">
+              <span>רמ״ח</span>
+              <span>שכר</span>
+              <span>וגמלאות</span>
+            </div>
+
+            <div className="signature-line">
+              <span>חשבות</span>
+              <span>המשטרה</span>
+            </div>
+          </div>
+
+          </div>
+        </div>
+
+
+      
     </section>
   );
 }
