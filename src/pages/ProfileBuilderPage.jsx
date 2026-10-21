@@ -18,15 +18,15 @@ const FILTERS_BY_TYPE = {
 
   קצין: [
     { key: "מקצוע", label: "מקצוע", displayOnly: true },
+    { key: "דירוג", label: "דירוג" },
     { key: "דרגת שכר", label: "דרגת שכר" },
     { key: "שלב", label: "שלב" },
     { key: "תמריץ", label: "תמריץ" },
-    { key: "דירוג", label: "דירוג" },
     { key: "רמה", label: "רמה" },
     { key: "ותק", label: "ותק" },
     { key: "פעילות", label: "פעילות" },
     { key: "גמול א'", label: "גמול א'" },
-    { key: "גמול ב'", label: "גמול ב'"},
+    { key: "גמול ב'", label: "גמול ב'" },
   ],
 };
 
@@ -128,15 +128,44 @@ function ProfileBuilderPage() {
       return professionOptions;
     }
 
-    return uniqueValues(getRowsForField(field.key).map((row) => row[field.key]));
-  }
+    const rows = getRowsForField(field.key);
 
+    if (
+      employeeType === "קצין" &&
+      field.key === "דרגת שכר"
+    ) {
+      if (!filters["דירוג"]) {
+        return [];
+      }
+
+      return uniqueValues(
+        rows.map((row) => row["דרגת שכר"])
+      );
+    }
+
+    return uniqueValues(
+      rows.map((row) => row[field.key])
+    );
+  }
 const visibleFields = useMemo(() => {
   return currentFields.filter((field) => {
     if (field.displayOnly) return true;
+    if (
+      employeeType === "קצין" &&
+      field.key === "דרגת שכר" &&
+      !filters["דירוג"]
+    ) {
+      return false;
+    }
 
     if (field.key === "רמה") {
-      return filters["דרגת שכר"] === "פקד";
+      return (
+        employeeType === "קצין" &&
+        (
+          filters["דירוג"] === "משפטנים" ||
+          filters["דרגת שכר"] === "פקד"
+        )
+      );
     }
 
     const options = getOptions(field);
@@ -160,6 +189,16 @@ const visibleFields = useMemo(() => {
         [key]: value,
       };
 
+      if (
+        employeeType === "קצין" &&
+        key === "דירוג" &&
+        prev["דירוג"] !== value
+      ) {
+        next["דרגת שכר"] = "";
+        next["שלב"] = "";
+        next["רמה"] = "";
+        next["תמריץ"] = "";
+      }
       if (employeeType === "נגד" && (key === "מקצוע" || (key === "דרגת שכר" && next["מקצוע"]))) {
         const targetProfStr = key === "מקצוע" ? value : next["מקצוע"];
         
