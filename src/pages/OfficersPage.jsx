@@ -29,10 +29,10 @@ function OfficersPage() {
       }));
 
     return [
-      ...addType(inspectorRows, "מפקח"),
+      ...addType(inspectorRows, "מפקח (התחלתי 0)"),
       ...addType(lawRows, "משפטנים"),
-      ...addType(captainRows, "פקד"),
-      ...addType(majorRows, 'רפ"ק'),
+      ...addType(captainRows, "פקד (התחלתי 0)"),
+      ...addType(majorRows, 'רפ"ק (התחלתי 0)'),
     ];
   }, [inspectorRows, lawRows, captainRows, majorRows]);
 
