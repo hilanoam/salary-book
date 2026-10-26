@@ -59,50 +59,22 @@ function HomePage() {
       </div>
 
       
+        
         <div className="signatures-section">
           <div className="signature-greeting">בברכה,</div>
 
           <div className="official-signatures">
-           
-          <div className="official-signature">
-            <div className="signature-line signature-name">
-              <span>חגית</span>
-              <span>גולדשטיין</span>
-              <span>מויאל, תנ״צ</span>
-            </div>
+            <img
+              src="/signature-hagit.png"
+              alt="חגית גולדשטיין מויאל, תנ״צ - חשבת משטרת ישראל"
+              className="signature-image"
+            />
 
-            <div className="signature-line">
-              <span>חשבת</span>
-              <span>משטרת</span>
-              <span>ישראל</span>
-            </div>
-
-            <div className="signature-line">
-              <span>חשבות</span>
-              <span>המשטרה</span>
-            </div>
-          </div>
-
-
-            
-          <div className="official-signature">
-            <div className="signature-line signature-name">
-              <span>עדה</span>
-              <span>בראל, נצ״מ</span>
-            </div>
-
-            <div className="signature-line">
-              <span>רמ״ח</span>
-              <span>שכר</span>
-              <span>וגמלאות</span>
-            </div>
-
-            <div className="signature-line">
-              <span>חשבות</span>
-              <span>המשטרה</span>
-            </div>
-          </div>
-
+            <img
+              src="/signature-ada.png"
+              alt="עדה בראל, נצ״מ - רמ״ח שכר וגמלאות"
+              className="signature-image"
+            />
           </div>
         </div>
 
