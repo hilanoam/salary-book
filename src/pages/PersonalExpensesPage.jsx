@@ -20,6 +20,7 @@ function PersonalExpensesPage() {
           className="header-logo"
         />
 
+          <h1>החזר </h1>
           <h1>החזר הוצאות אישיות</h1>
 
           <p className="intro-subtitle">
