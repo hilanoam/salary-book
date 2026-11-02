@@ -162,11 +162,13 @@ function StudentsPage() {
             שכר שעתי לפי מקצוע
           </h2>
 
-          <DataTable
-            rows={studentsRows}
-            showToolbar={false}
-            showColumnFilters={false}
-          />
+          <div className="students-salary-table">
+            <DataTable
+              rows={studentsRows}
+              showToolbar={false}
+              showColumnFilters={false}
+            />
+          </div>
 
           <h2 className="students-section-title">
             תעריפי שכר לפי תפקיד ושעות עבודה

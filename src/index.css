@@ -903,6 +903,29 @@ tbody td {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+  .students-salary-table {
+  width: 100%;
+  min-width: 0;
+}
+
+.students-salary-table .table-wrap {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.students-salary-table table {
+  width: 100%;
+  min-width: 0;
+  table-layout: auto;
+}
+
+.students-salary-table th,
+.students-salary-table td {
+  font-size: 12px;
+  padding: 8px 5px;
+  white-space: normal;
+  overflow-wrap: normal;
+}
 
   .salary-table,
     table {
