@@ -110,9 +110,9 @@ function Sidebar({ isOpen, onClose }) {
 
           {openOfficers && (
             <div className="sub-nav">
-              <NavLink to="/officers" end  onClick={onClose} className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
+              {/*<NavLink to="/officers" end  onClick={onClose} className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
                 כל הטבלאות
-              </NavLink>
+              </NavLink>*/}
 
               <NavLink to="/officers/inspectors"  onClick={onClose} className={({ isActive }) => isActive ? "sub-nav-item active" : "sub-nav-item"}>
                 מפקח
