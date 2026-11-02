@@ -153,9 +153,7 @@ function SalaryIntroPage() {
               החוברת תתעדכן מעת לעת בעקבות הסכמי שכר חדשים ו/או שינויים
               מהותיים.
             </li>
-            <li>
-              גרסה זו כוללת הסכמי שכר שניתנו בפועל עד תאריך 01.11.2026.
-            </li>
+            
             <li>
               בכל פרופיל גיוס שאינו תואם לנתונים המפורטים, חוליית הסברה
               והדמיות שכר תעמוד לשירותכם בביצוע סימולציות פרטניות.
@@ -171,11 +169,14 @@ function SalaryIntroPage() {
           </div>
         </div>
 
-        <div className="official-signature">
-          <div className="signature-name">מורן מזרחי, רפ"ק</div>
-          <div>ר' חו' הסברה והדמיות שכר</div>
-          <div>מחלקת שכר וגמלאות</div>
-        </div>
+        <div className="signatures-section">
+        <div className="signature-greeting">בברכה,</div>
+
+        <img
+          src="/signature-moran.png"
+          className="signature-moran-image"
+        />
+      </div>
       </section>
     </div>
   );

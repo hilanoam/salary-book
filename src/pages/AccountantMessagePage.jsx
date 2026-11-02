@@ -54,7 +54,7 @@ export default function AccountantMessagePage() {
           קבוצה בטבלת המקצועות תוביל לטבלת סכום השכר
           השוטף (סה"כ משכורת). לחיצה על טבלת החזר
           ההוצאות תציג את פירוט החזרי ההוצאות בהתאם
-          לדרגת השכר. מצורף הקישור לחוברת.
+          לדרגת השכר. 
         </p>
 
         <p>
@@ -66,11 +66,14 @@ export default function AccountantMessagePage() {
 
         <p>לשירותכם תמיד,</p>
 
-        <div className="accountant-signature">
-          <p>בברכה,</p>
-          <strong>חגית גולדשטיין מויאל, תנ"צ</strong>
-          <strong>חשבת משטרת ישראל</strong>
-        </div>
+        <div className="signatures-section">
+        <div className="signature-greeting">בברכה,</div>
+
+        <img
+          src="/signature-hagit.png"
+          className="signature-hagit-image"
+        />
+      </div>
       </div>
     </div>
   );
