@@ -15,6 +15,17 @@ function Sidebar({ isOpen, onClose }) {
       </div>
 
       <nav className="sidebar-nav">
+        
+        <NavLink
+          to="/accountant-message"
+          onClick={onClose}
+          className={({ isActive }) =>
+            isActive ? "nav-item active" : "nav-item"
+          }
+        >
+          דבר החשבת
+        </NavLink>
+
         <NavLink to="/home"  onClick={onClose} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
           הקדמה
         </NavLink>

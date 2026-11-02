@@ -1600,3 +1600,143 @@ tbody td {
     max-width: 180px;
   }
 }
+
+/* ===== דבר החשבת ===== */
+
+.accountant-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+  direction: rtl;
+}
+
+.accountant-header {
+  padding: 38px 30px;
+  text-align: center;
+  background: linear-gradient(135deg, #f8fbff, #eef6ff);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.accountant-header h1 {
+  margin: 0;
+  font-size: 34px;
+  color: #16324f;
+}
+
+.accountant-body {
+  padding: 38px 48px 45px;
+  font-size: 16px;
+  line-height: 2;
+  color: #1e293b;
+  text-align: right;
+}
+
+.accountant-body > p {
+  margin: 0 0 20px;
+}
+
+.accountant-notice {
+  margin: 28px 0;
+  padding: 20px 24px;
+  background: #f8fbff;
+  border-right: 4px solid #2563eb;
+  border-radius: 12px;
+}
+
+.accountant-notice p {
+  margin: 0 0 10px;
+}
+
+.accountant-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.accountant-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 48px 0 0;
+  gap: 4px;
+  color: #111827;
+}
+
+.accountant-signature p {
+  margin: 0 0 20px;
+}
+
+.accountant-signature strong {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .accountant-header {
+    padding: 28px 18px;
+  }
+
+  .accountant-header h1 {
+    font-size: 27px;
+  }
+
+  .accountant-body {
+    padding: 26px 20px 35px;
+    font-size: 15px;
+  }
+
+  .accountant-notice {
+    padding: 16px;
+  }
+}
+/* עיצוב הכותרת בעמוד דבר החשבת */
+.accountant-page .intro-main-header {
+  position: relative;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 150px;
+  box-sizing: border-box;
+}
+
+/* הגדלת הכותרת */
+.accountant-page .intro-main-header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* מיקום הסמל במרכז הגובה */
+.accountant-page .intro-main-header .header-logo {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  width: 180px;
+  height: auto;
+  max-height: 210px;
+  object-fit: contain;
+}
+
+/* התאמה לטלפונים */
+@media (max-width: 600px) {
+  .accountant-page .intro-main-header {
+    min-height: 150px;
+    padding: 20px 90px;
+  }
+
+  .accountant-page .intro-main-header h1 {
+    font-size: 32px;
+  }
+
+  .accountant-page .intro-main-header .header-logo {
+    width: 75px;
+    max-height: 110px;
+    right: 12px;
+  }
+}

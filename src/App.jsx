@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import HomePage from "./pages/HomePage";
+import AccountantMessagePage from "./pages/AccountantMessagePage";
 import SalaryIntroPage from "./pages/SalaryIntroPage";
 import PersonalExpensesPage from "./pages/PersonalExpensesPage";
 import ProfessionsPage from "./pages/ProfessionsPage";
@@ -20,6 +21,7 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Navigate to="/home" replace />} />
+        <Route path="accountant-message" element={<AccountantMessagePage />} />
         <Route path="home" element={<HomePage />} />
         <Route path="salary-intro" element={<SalaryIntroPage />} />
         <Route path="personal-expenses" element={<PersonalExpensesPage />} />

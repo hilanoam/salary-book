@@ -7,7 +7,7 @@ function HomePage() {
           alt="לוגו מחלקת שכר"
           className="header-logo" 
         />
-        <div className="intro-badge">גרסה 01 · 01.10.2026</div>
+        <div className="intro-badge">גרסה 01 · 01.11.2026</div>
 
         <h1>חוברת שכר למתגייסים</h1>
 
@@ -54,30 +54,9 @@ function HomePage() {
         <ul>
           <li>המידע בחוברת עשוי להשתנות מעת לעת.</li>
           <li>בשנת 2026 קיים ניכוי שכר של 1.2%.</li>
-          <li>החישובים נכונים למועד עדכון גרסת החוברת: 01.10.2026.</li>
+          <li>החישובים נכונים למועד עדכון גרסת החוברת: 01.11.2026.</li>
         </ul>
       </div>
-
-      
-        
-        <div className="signatures-section">
-          <div className="signature-greeting">בברכה,</div>
-
-          <div className="official-signatures">
-            <img
-              src="/signature-hagit.png"
-              alt="חגית גולדשטיין מויאל, תנ״צ - חשבת משטרת ישראל"
-              className="signature-image"
-            />
-
-            <img
-              src="/signature-ada.png"
-              alt="עדה בראל, נצ״מ - רמ״ח שכר וגמלאות"
-              className="signature-image"
-            />
-          </div>
-        </div>
-
 
       
     </section>
