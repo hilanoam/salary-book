@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AccountantMessagePage() {
   return (
-    <div className="accountant-page" dir="rtl">
+    <div className="intro-page" dir="rtl">
       <header className="intro-main-header">
         <img
           src="/logo.png"
