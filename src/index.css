@@ -1548,8 +1548,8 @@ tbody td {
 
 .signatures-section .signature-moran-image {
   display: block;
-  width: 200px;
-  max-width: 200px;
+  width: 250px;
+  max-width: 250px;
   height: auto;
   object-fit: contain;
   align-self: flex-end;
@@ -1773,7 +1773,15 @@ tbody td {
   }
 
   .signatures-section .signature-ada-image,
-  .signatures-section .signature-hagit-image,
+  .signatures-section .signature-hagit-image
+   {
+    width: 200px;
+    max-width: 200px;
+    height: auto;
+    align-self: flex-end;
+    margin: 0 10px 0 0;
+  }
+
   .signatures-section .signature-moran-image {
     width: 200px;
     max-width: 200px;
