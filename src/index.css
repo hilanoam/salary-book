@@ -1763,3 +1763,27 @@ tbody td {
     right: 12px;
   }
 }
+/* התאמת החותמות לטלפון בלבד */
+@media (max-width: 600px) {
+
+  .signatures-section {
+    width: 100%;
+    align-items: stretch;
+    margin: 20px 0 25px;
+  }
+
+  .signatures-section .signature-ada-image,
+  .signatures-section .signature-hagit-image,
+  .signatures-section .signature-moran-image {
+    width: 150px;
+    max-width: 150px;
+    height: auto;
+    align-self: flex-end;
+    margin: 0 10px 0 0;
+  }
+
+  .signatures-section .signature-greeting {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
