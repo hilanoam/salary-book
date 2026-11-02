@@ -21,7 +21,7 @@ function PersonalExpensesPage() {
         />
 
           <h1>החזר </h1>
-          <h1>החזר הוצאות אישיות</h1>
+          <h1>הוצאות אישיות</h1>
 
           <p className="intro-subtitle">
             טבלת החזרי אש״ל גלובלי והוצאות טלפון לפי דרגת שכר
@@ -54,8 +54,8 @@ function PersonalExpensesPage() {
 
           <h3>טבלת החזר הוצאות אישיות לפי דרגה</h3>
 
-          <div className="table-wrap">
-            <table className="salary-table">
+          <div className="station-table-container">
+           <table className="salary-table personal-expenses-table">
               <thead>
                 <tr>
                   <th>דרגת שכר</th>

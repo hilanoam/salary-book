@@ -905,9 +905,22 @@ tbody td {
   }
 
   .salary-table,
-  table {
-    min-width: 850px;
-  }
+    table {
+      min-width: 850px;
+    }
+    .personal-expenses-table {
+      width: 100%;
+      min-width: 0;
+      table-layout: auto;
+    }
+
+    .personal-expenses-table th,
+    .personal-expenses-table td {
+      padding: 8px 6px;
+      font-size: 12px;
+      white-space: normal;
+      overflow-wrap: normal;
+    }
 
   .salary-table th,
   .salary-table td {
@@ -1413,6 +1426,7 @@ tbody td {
     padding: 12px 10px;
     font-size: 13px;
   }
+  
 }
 
 
