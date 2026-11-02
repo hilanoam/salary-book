@@ -41,7 +41,7 @@ function ProfessionsPage() {
               alt="לוגו מחלקת שכר"
               className="header-logo"
             />
-          <h1>חיפוש לפי מקצוע</h1>
+          <h1><p></p>חיפוש לפי מקצוע</h1>
 
           <p className="intro-subtitle">
             חיפוש לפי שם מקצוע או מספר מקצוע וקבלת קבוצת התמריץ ואחוזי התמריץ
