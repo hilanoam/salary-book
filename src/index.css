@@ -1528,8 +1528,8 @@ tbody td {
 }
 .signatures-section .signature-ada-image {
   display: block;
-  width: 300px;
-  max-width: 300px;
+  width: 250px;
+  max-width: 250px;
   height: auto;
   object-fit: contain;
   align-self: flex-end;
@@ -1538,8 +1538,8 @@ tbody td {
 
 .signatures-section .signature-hagit-image {
   display: block;
-  width: 300px;
-  max-width: 300px;
+  width: 250px;
+  max-width: 250px;
   height: auto;
   object-fit: contain;
   align-self: flex-end;
