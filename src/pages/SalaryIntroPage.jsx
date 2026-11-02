@@ -11,7 +11,8 @@ function SalaryIntroPage() {
               alt="לוגו מחלקת שכר"
               className="header-logo"
             />
-          <h1>שכר מתגייסים · 2026</h1>
+          <h1>שכר מתגייסים</h1>
+          <h1>2026</h1>
           <p className="intro-subtitle">
             מידע כללי, עקרונות שכר והבהרות לנתונים המוצגים בחוברת
           </p>

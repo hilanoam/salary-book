@@ -9,7 +9,8 @@ function UserGuidePage() {
             className="header-logo"
           />
 
-          <h1>מדריך משתמש</h1>
+          <h1>מדריך </h1>
+          <h1> משתמש</h1>
 
           <p className="intro-subtitle">
             הסבר מלא לשימוש בחוברת השכר הדיגיטלית
